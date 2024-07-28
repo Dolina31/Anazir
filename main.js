@@ -1,5 +1,4 @@
 import "./components/reusable-component";
-
 import "./components/footer/footer.css";
 import "./components/navbar/navbar.css";
 
@@ -97,6 +96,15 @@ const golemDataArray = [
     speed: "15.75",
   },
 ];
+
+document.addEventListener("DOMContentLoaded", () => {
+  const defaultGolem = golemDataArray[0]; // Choisissez le premier golem par défaut ou celui de votre choix
+
+  if (defaultGolem) {
+    displayInfo(defaultGolem.id);
+    document.getElementById(defaultGolem.id).classList.add("active");
+  }
+});
 
 function displayInfo(id) {
   const golemData = golemDataArray.find((item) => item.id === id);

@@ -1,9 +1,20 @@
+@font-face {
+  font-family: "Runico";
+  src: url("./Runico-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: arpona, serif;
   color: #e7e3db;
   background-color: #0f0f0c;
   margin: 0;
-  background-image: url(./assets/images/Textures.png);
+  background-image: url("./assets/images/background-texture.png");
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .video-background {
@@ -14,6 +25,28 @@ body {
 
 header {
   position: relative;
+}
+
+.button {
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  box-shadow: inset 0px 0px 5px #baa884;
+  padding: 12px;
+  background-color: #ece2cf;
+  border: 3px solid #baa884;
+  outline: 2px solid #000000; /* Bordure intérieure */
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #d4c9b2;
+}
+
+a {
+  text-decoration: none;
 }
 
 .header-content {
@@ -44,6 +77,13 @@ header {
   gap: 10px;
 }
 
+.section-titles {
+  transform: translateY(-39px);
+  width: 100%;
+  text-align: center;
+  font-size: 2.3em;
+}
+
 .social-media-logo {
   list-style: none;
   position: absolute;
@@ -64,8 +104,43 @@ header {
   text-shadow: #00fcff 1px 0 10px;
 }
 
-.banner {
+.banner-section {
+  background-color: #21201a;
+  height: 110px;
+  position: relative;
+  transform: translateY(-5px);
+  border: 1px solid #292929;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+}
+
+.banner-section__alphabet-background {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: "Runico";
+  color: #2a2820;
+  font-size: 6em;
+  position: absolute;
+  height: 100%;
+  width: 104%;
+}
+
+.banner-section__wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.banner-section p {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #c1b69b;
 }
 
 .text-color--blue {
@@ -85,6 +160,7 @@ header {
 
 .economy-section__background-img {
   position: absolute;
+  z-index: -1;
 }
 
 .economy-section__center {
@@ -104,20 +180,12 @@ header {
   justify-content: center;
 }
 
-.economy-section__text h2 {
-  font-size: 2.5em;
+.economy-section .button {
+  width: 50%;
 }
 
-.economy-section__text a {
-  text-align: center;
-  font-size: 0.9em;
-  font-weight: bold;
-  text-decoration: none;
-  color: black;
-  padding: 7px;
-  width: 50%;
-  background-color: #ece2cf;
-  border: 3px solid #baa884;
+.economy-section__text h2 {
+  font-size: 2.5em;
 }
 
 .economy-section__box {
@@ -236,21 +304,20 @@ header {
 }
 
 .game-infos-section {
-  margin-top: 60px;
+  margin-top: 30px;
   position: relative;
 }
 
 .game-infos-section__upper {
-  height: 60vh;
+  height: 90vh;
   position: relative;
 }
 
 .game-infos-section__golem-img {
   position: absolute;
-  right: 8%;
-  top: -261px;
+  right: 11%;
+  top: -250px;
   z-index: 1;
-  height: 310px;
 }
 
 .game-infos-section__turret-img {
@@ -263,26 +330,27 @@ header {
 
 .game-infos-section__background-img {
   width: 100%;
+  height: 110%;
   position: absolute;
-  height: 50vw;
-  width: 100vw;
+  z-index: -6;
 }
 
 .game-infos-section__phone__img {
   position: absolute;
-  top: 38px;
-  right: 25%;
-  height: 426px;
-  width: 208px;
+  top: 128px;
+  right: 26%;
+  height: 486px;
+  width: 235px;
+  transform: translateX(12px);
 }
 
 .game-infos-section__phone__gameplay-img {
   position: absolute;
-  right: 25%;
-  top: 48px;
+  right: 26%;
+  top: 141px;
   border-radius: 20px;
-  height: 405px;
-  width: 198px;
+  height: 447px;
+  width: 211px;
 }
 
 .game-infos-section__play-anazir {
@@ -309,10 +377,14 @@ header {
   justify-content: center;
   align-items: center;
   gap: 8%;
+  transform: translateY(-35px);
 }
 
+.wrapper2 {
+  transform: translateY(38px);
+}
 .game-infos-section__translateY {
-  transform: translateY(-57px);
+  transform: translateY(-141px);
 }
 
 .game-infos-section__card-box-img {
@@ -358,16 +430,9 @@ header {
   width: 289px;
 }
 
-.section-titles {
-  transform: translateY(-39px);
-  width: 100%;
-  text-align: center;
-  font-size: 2.1em;
-}
-
 .collect-golem-section {
   height: 100vh;
-
+  scroll-behavior: smooth;
   position: relative;
 }
 
@@ -390,7 +455,7 @@ header {
 
 .collect-golem-section__card {
   width: 1079px;
-  height: 60%;
+  height: 490px;
   position: relative;
   background-color: #ece2cf;
   border: 6px solid #baa884;
@@ -448,14 +513,14 @@ header {
 
 .collect-golem-section__card__video {
   margin-left: 55px;
-  height: 110%;
+  height: 100%;
   width: 360px;
 }
 
 .collect-golem-section__card__wrapper-center video {
-  transform: translateY(29px);
-  width: 100%;
-  height: 121%;
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .mask-image {
@@ -477,6 +542,10 @@ header {
   justify-content: inherit;
   align-items: baseline;
   gap: 10px;
+}
+
+img[src="./assets/images/epic-icon.png"] {
+  height: 95px;
 }
 
 .golem-infos__name {
@@ -512,7 +581,7 @@ header {
 .turret-array,
 .invocation-array {
   height: 300px;
-  width: 230px;
+  width: 255px;
   border: 2px solid #c1b69b;
   position: relative;
   display: flex;
@@ -543,7 +612,7 @@ header {
   height: 37px;
   position: absolute;
   top: -17px;
-  left: 42px;
+  left: 58px;
 }
 
 .stats-wrapper {
@@ -581,7 +650,7 @@ header {
 .slider-section {
   position: relative;
   margin-top: 75px;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
 }
@@ -590,8 +659,8 @@ header {
   display: flex;
   justify-content: center;
   position: relative;
-  width: 800px;
-  height: 54%;
+  width: 1000px;
+  height: 59%;
   position: relative;
   background-color: #ece2cf;
   border: 6px solid #baa884;
@@ -617,7 +686,7 @@ header {
   overflow: hidden;
   background-color: #ece2cf;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s;
 }
 
 .slider-arrow-border:hover {
@@ -735,24 +804,14 @@ header {
   transform: scale(1.7);
 }
 
-.roadmap-section {
-  height: 80vh;
+.roadmap-partner__background {
   background-image: url("./assets/images/crystall-illustration.png");
   background-size: cover;
   background-position: center;
 }
 
-.roadmap-section-linear-background {
-  position: absolute;
-  z-index: 0;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(
-    180deg,
-    #161513 0%,
-    rgba(0, 0, 0, 0.37) 47.5%,
-    #1a1914 100%
-  );
+.roadmap-section {
+  height: 75vh;
 }
 
 .roadmap-section__wrapper {
@@ -761,9 +820,36 @@ header {
 }
 
 .roadmap {
+  margin-top: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roadmap__phases__wrapper {
   display: flex;
   justify-content: center;
   gap: 30px;
+}
+
+.line-green,
+.line-white {
+  position: absolute;
+  bottom: 17px;
+  z-index: -1;
+  height: 10px;
+}
+
+.line-green {
+  background: linear-gradient(90deg, rgba(97, 255, 0, 0) 0%, #61ff00 100%);
+  width: 900px;
+  transform: translateX(-273px);
+}
+
+.line-white {
+  background: linear-gradient(90deg, #e7e3db 55%, rgba(129, 126, 122, 0) 100%);
+  width: 550px;
+  transform: translateX(439px);
 }
 
 .roadmap__phase {
@@ -773,21 +859,71 @@ header {
 }
 
 .roadmap__phase__content {
-  height: 265px;
-  width: 260px;
+  height: 275px;
+  width: 275px;
   background-color: #21201a;
 }
 
-.phase__done {
+.roadmap__background-figure {
+  z-index: -1;
+  position: absolute;
+  height: 225px;
+  width: 225px;
+  border: 3px solid #988b6b;
+  transform: rotate(45deg);
+  top: 104px;
+  margin-left: 21px;
+}
+
+.roadmap__phase__indicators {
+  display: flex;
+  justify-content: center;
+  gap: 266px;
+}
+
+.roadmap__phase__indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.roadmap__phase.completed .roadmap__phase__content {
   border: 4px solid #61ff00;
 }
 
-.phase__current {
+.roadmap__phase.current .roadmap__phase__content {
   border: 4px solid #ffc700;
 }
 
-.phase__next {
+.roadmap__phase.next .roadmap__phase__content {
   border: 4px solid #988b6b;
+}
+
+.roadmap__phase__indicator.completed .roadmap__phase__circle {
+  background: #61ff00;
+}
+
+.roadmap__phase__indicator.current .roadmap__phase__circle {
+  background: #ffc700;
+}
+
+.roadmap__phase__indicator.next .roadmap__phase__circle {
+  border: 4px solid #cecece;
+  background: #2a2820;
+}
+
+.roadmap__phase__indicator.completed .roadmap__phase__text-color {
+  color: #61ff00;
+}
+.roadmap__phase__indicator.current .roadmap__phase__text-color {
+  color: #ffc700;
+}
+
+.roadmap__phase__text-color {
+  margin-top: 10px;
+  position: absolute;
+  bottom: -31px;
 }
 
 .roadmap__phase__content h3 {
@@ -810,7 +946,7 @@ header {
 }
 
 .roadmap__phase__content p {
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: 600;
   text-align: center;
   width: 90%;
@@ -824,15 +960,480 @@ header {
   border: 4px solid rgb(0, 0, 0);
 }
 
-.circle-phase__done {
-  background: #61ff00;
+.partner-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50vh;
 }
 
-.circle-phase__current {
-  background: #ffa700;
+.partners {
+  margin-top: 15px;
+  width: 57%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-.circle-phase__next {
-  border: 4px solid #cecece;
-  background: #2a2820;
+.partners a img {
+  height: 40px;
+}
+
+.threevision-section {
+  height: 70vh;
+  position: relative;
+  z-index: 2;
+  background-color: #fffefb;
+}
+
+.threevision-section__background-texture {
+  position: absolute;
+  opacity: 0.2;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.threevision-section__logo {
+  height: 100px;
+}
+
+.threevision-section__wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.threevision-section p {
+  text-align: center;
+  width: 60%;
+  color: black;
+  font-size: 2.7em;
+  font-weight: bold;
+}
+
+.threevision-section .button {
+  padding: 10px 15px;
+  font-size: 1.05em;
+}
+
+.threevision-section__background-logo {
+  position: absolute;
+}
+
+.logo1 {
+  top: 10%;
+  left: 39%;
+  transform: scaleX(-1) scaleY(1) rotate(121deg);
+  height: 26px;
+}
+
+.logo2 {
+  top: 30%;
+  left: 10%;
+  transform: rotate(112deg);
+  height: 30px;
+}
+
+.logo3 {
+  top: 43%;
+  left: 24%;
+}
+
+.logo4 {
+  top: 21%;
+  left: 82%;
+  height: 30px;
+}
+
+.logo5 {
+  top: 80%;
+  left: 14%;
+  height: 30px;
+}
+
+.joins-us-section {
+  background-image: url("./assets/images/joins-us-background.png");
+  background-size: cover;
+  height: 43vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.joins-us-section__text {
+  font-size: 2.4em;
+  font-weight: bold;
+  width: 30%;
+}
+
+.joins-us-discord {
+  fill: white;
+}
+
+.joins-us-section__link__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 105px;
+  margin-top: 15px;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.joins-us-section__link__wrapper p {
+  font-size: 1.7em;
+  font-weight: bold;
+  color: white;
+}
+
+.discord-link {
+  background-color: #586aea;
+  border: 5px solid #404ca1;
+  transition: background-color 0.2s;
+}
+
+.discord-link:hover {
+  background-color: #7b8bff;
+}
+
+.telegram-link {
+  background-color: #30a8de;
+  border: 5px solid #1b6c90;
+  transition: background-color 0.2s;
+}
+
+.telegram-link:hover {
+  background-color: #7ad6ff;
+}
+
+@media (max-width: 1400px) {
+  /* ----- collect golem section -----*/
+  .collect-golem-section__wrapper {
+    transform: translateX(25px);
+  }
+
+  .collect-golem-section__card {
+    width: 936px;
+  }
+
+  .collect-golem-section__card__wrapper-center video {
+    width: 96%;
+  }
+
+  .turret-array,
+  .invocation-array {
+    width: 232px;
+  }
+
+  .array-title {
+    left: 44px;
+  }
+
+  /* ----- slider section -----*/
+  .slider {
+    width: 850px;
+  }
+
+  .slider-alphabet-backgound {
+    height: 200px;
+    top: 17%;
+    width: 92%;
+  }
+
+  /* ----- roadmap section -----*/
+
+  .roadmap__phase__indicators {
+    gap: 232px;
+    transform: translateX(6px);
+  }
+
+  .line-green {
+    width: 669px;
+    transform: translateX(-194px);
+  }
+
+  .line-white {
+    width: 358px;
+    transform: translateX(337px);
+  }
+
+  .roadmap__phase__content {
+    height: 250px;
+    width: 240px;
+  }
+
+  .roadmap__background-figure {
+    height: 203px;
+    width: 203px;
+  }
+
+  /* ----partner section -----*/
+
+  .partners {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1200px) {
+  /* ----economy section -----*/
+  .economy-section__center {
+    width: 90%;
+  }
+
+  .economy-section__box {
+    width: 50%;
+  }
+
+  .economy-section__text {
+    width: 41%;
+  }
+
+  /* ----- banner section -----*/
+  .banner-section p {
+    font-size: 1.2em;
+  }
+
+  /* ----- game infos section -----*/
+  .game-infos-section__phone__gameplay-img {
+    right: 15%;
+  }
+  .game-infos-section__phone__img {
+    right: 15%;
+  }
+  .game-infos-section__golem-img {
+    right: 3%;
+  }
+  .game-infos-section__wrapper.game-infos-section__translateY {
+    gap: 3%;
+  }
+
+  /* ----- roadmap section -----*/
+
+  .roadmap__phase__indicators {
+    gap: 206px;
+    transform: none;
+  }
+
+  .roadmap__phases__wrapper {
+    gap: 20px;
+  }
+
+  .line-green {
+    width: 599px;
+  }
+
+  .line-white {
+    transform: translateX(281px);
+  }
+
+  .roadmap__phase__content {
+    height: 235px;
+    width: 215px;
+  }
+
+  .roadmap__background-figure {
+    height: 180px;
+    width: 180px;
+    top: 108px;
+    margin-left: 14px;
+  }
+
+  .roadmap__phase__content p {
+    font-size: 1em;
+  }
+
+  .roadmap__phase__circle {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* --------Tablette --------*/
+
+@media (max-width: 1024px) {
+  /*-----header------*/
+  .header-content {
+    gap: 10px;
+    bottom: 12%;
+  }
+
+  .header-content__logo__anazir-logo {
+    height: 120px;
+  }
+
+  .header-content__logo__circle {
+    top: -62%;
+    right: -15%;
+  }
+
+  .header-content h1 {
+    font-size: 2.5em;
+  }
+
+  .header-content__app-logos a img {
+    height: 42px;
+  }
+
+  .social-media-logo {
+    justify-content: center;
+    width: 100%;
+    padding: 0px;
+    right: 0px;
+    bottom: 4%;
+  }
+
+  /*------ banner section ----- */
+  .banner-section p {
+    font-size: 1em;
+  }
+
+  /*----- economy section -----*/
+
+  .economy-section__center {
+    flex-direction: column;
+    gap: 13%;
+  }
+
+  .economy-section__text {
+    width: 65%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .economy-section__box {
+    width: 64%;
+  }
+
+  /* game infos section */
+  .game-infos-section__golem-img {
+    top: -208px;
+  }
+
+  .game-infos-section {
+    margin-top: 250px;
+  }
+
+  .game-infos-section__golem-img {
+    top: -357px;
+  }
+
+  .game-infos-section__background-img {
+    height: 80%;
+  }
+
+  .game-infos-section__phone__gameplay-img {
+    top: 38px;
+  }
+
+  .game-infos-section__phone__img {
+    top: 25px;
+  }
+
+  .game-infos-section__play-anazir {
+    top: 27%;
+    left: 24%;
+  }
+
+  .game-infos-section__turret-img {
+    display: none;
+  }
+
+  /* collect golem section */
+
+  .collect-golem-section__card {
+    width: 90%;
+    height: 800px;
+  }
+
+  .collect-golem-section__card__arrays {
+    flex-direction: column;
+  }
+
+  .turret-array,
+  .invocation-array {
+    width: 90%;
+    height: 268px;
+  }
+
+  .array-title {
+    left: 140px;
+  }
+
+  .collect-golem-section__selector-background {
+    height: 80%;
+    width: 106px;
+    top: 60%;
+    left: 43%;
+    transform: rotateZ(90deg);
+  }
+
+  .collect-golem-section__selector {
+    position: absolute;
+    left: 194px;
+    flex-direction: row;
+    gap: 15px;
+    top: 95%;
+  }
+
+  .masked-video {
+    mask-image: url(/assets/images/card-video-cache-tablette.png);
+  }
+
+  .collect-golem-section__card__wrapper-center video {
+    width: 119%;
+    height: 94%;
+  }
+
+  .collect-golem-section__card__video {
+    margin-left: 14px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* roadmap section */
+  .roadmap-section h2 {
+    position: absolute;
+  }
+
+  .roadmap-section {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .roadmap__background-figure {
+    display: none;
+  }
+
+  .roadmap-section__wrapper {
+    display: flex;
+    justify-content: center;
+    width: 85%;
+  }
+
+  .roadmap {
+    width: 100%;
+  }
+
+  .roadmap__phases__wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .roadmap__phase__content {
+    width: 100%;
+  }
+
+  .roadmap__phase__indicators {
+    flex-direction: column;
+  }
 }

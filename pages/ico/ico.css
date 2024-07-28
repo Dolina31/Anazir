@@ -664,4 +664,9 @@ p {
   .invest__section__connect-wallet__error-message {
     bottom: 10px;
   }
+
+  /* slider */
+  .slider {
+    width: 90%;
+  }
 }
