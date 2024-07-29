@@ -188,7 +188,8 @@ const slideData = [
     image: "./assets/images/leveling.png",
     sideImage: "./assets/images/acorce.png",
     imageClassName: "acorce-image",
-    sideImagePosition: "slide__side-image__position-right",
+    sideImagePosition:
+      "slide__side-image__position-right responsive-acorce-position",
   },
   {
     title: "Des multitudes de stratégies !",
