@@ -5,6 +5,12 @@
   font-style: normal;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: arpona, serif;
   color: #e7e3db;
@@ -17,14 +23,26 @@ html {
   scroll-behavior: smooth;
 }
 
+header {
+  position: relative;
+}
+
 .video-background {
   width: 100%;
   object-fit: cover;
   z-index: 1;
+  position: relative;
 }
 
-header {
-  position: relative;
+.video-background__linear {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgb(255, 0, 0) 53.17%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 2;
 }
 
 .button {
@@ -474,20 +492,19 @@ a {
 
 .collect-golem-section__selector {
   position: absolute;
-  left: -30px;
+  left: -31px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   top: -10px;
 }
 
 .collect-golem-section__selector img {
-  height: 70px;
   cursor: pointer;
   padding: 5px;
   border-radius: 5px;
   z-index: 3;
-  width: 85%;
+  width: 71px;
   transition: transform 0.2s ease-in-out;
 }
 
@@ -1130,6 +1147,17 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   /* ----- collect golem section -----*/
+  .collect-golem-section {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .collect-golem-section__background-img {
+    width: 192%;
+  }
+
   .collect-golem-section__wrapper {
     transform: translateX(25px);
   }
@@ -1219,11 +1247,12 @@ img[src="./assets/images/epic-icon.png"] {
   .game-infos-section__phone__gameplay-img {
     right: 15%;
   }
+
   .game-infos-section__phone__img {
     right: 15%;
   }
   .game-infos-section__golem-img {
-    right: 3%;
+    right: 1%;
   }
   .game-infos-section__wrapper.game-infos-section__translateY {
     gap: 3%;
@@ -1295,7 +1324,7 @@ img[src="./assets/images/epic-icon.png"] {
 
   .header-content {
     gap: 10px;
-    bottom: 12%;
+    bottom: 10%;
   }
 
   .header-content__logo__anazir-logo {
@@ -1331,7 +1360,7 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .banner-section__wrapper {
-    width: 92%;
+    width: 97%;
   }
 
   .banner-section__alphabet-background {
@@ -1347,6 +1376,7 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   /*----- economy section -----*/
+
   .economy-section__center {
     flex-direction: column;
     gap: 13%;
@@ -1359,7 +1389,8 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .economy-section__box {
-    width: 64%;
+    width: 85%;
+    height: 500px;
   }
 
   .economy-section__background-img {
@@ -1368,9 +1399,13 @@ img[src="./assets/images/epic-icon.png"] {
 
   /* game infos section */
 
+  .game-infos-section__upper {
+    height: 73vh;
+  }
+
   .game-infos-section__background-img {
     object-fit: cover;
-    height: 95%;
+    height: 97%;
   }
 
   .game-infos-section__wrapper.game-infos-section__translateY {
@@ -1408,7 +1443,7 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .game-infos-section__golem-img {
-    bottom: -275px;
+    bottom: -259px;
   }
 
   .game-infos-section__phone__gameplay-img {
@@ -1420,8 +1455,8 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .game-infos-section__play-anazir {
-    top: 30%;
-    left: 24%;
+    top: 27%;
+    left: 22%;
   }
 
   .game-infos-section__turret-img {
@@ -1447,23 +1482,23 @@ img[src="./assets/images/epic-icon.png"] {
   .collect-golem-section__selector-background {
     position: absolute;
     height: unset;
-    width: 92px;
+    width: 80px;
     z-index: 1;
-    top: -242px;
+    top: -212px;
     left: unset;
     transform: rotateZ(90deg);
   }
 
   .collect-golem-section__selector img {
-    height: 66px;
+    width: 63px;
   }
 
   .collect-golem-section__selector {
     position: absolute;
     flex-direction: row;
     left: unset;
-    gap: 15px;
-    top: -8px;
+    gap: 8px;
+    top: -10px;
   }
 
   .collect-golem-section__card__fairy {
@@ -1522,18 +1557,18 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .slider {
-    width: 92%;
+    width: 90%;
   }
 
   .slide__side-image__position-left {
-    left: -9%;
-    bottom: -38%;
+    left: -12%;
+    bottom: -31%;
     height: 185px;
   }
 
   .slide__side-image__position-right {
     right: -3%;
-    bottom: -36%;
+    bottom: -27%;
     height: 180px;
   }
 
@@ -1587,14 +1622,14 @@ img[src="./assets/images/epic-icon.png"] {
     width: 374px;
     transform: rotateZ(90deg);
     bottom: 174px;
-    right: -165px;
+    right: -169px;
   }
 
   .line-green {
     width: 674px;
     transform: rotateZ(90deg);
     top: 329px;
-    right: -314px;
+    right: -319px;
   }
 
   .roadmap__phase__text-color {
@@ -1608,8 +1643,7 @@ img[src="./assets/images/epic-icon.png"] {
 
   /* partner section */
   .partner-section {
-    margin-top: 90px;
-    margin-bottom: 60px;
+    margin-top: 120px;
   }
 
   /* joins us section */
@@ -1638,25 +1672,16 @@ img[src="./assets/images/epic-icon.png"] {
 @media (max-width: 756px) {
   /* banner section */
   .banner-section p {
-    font-size: 0.7em;
+    font-size: 0.72em;
   }
 
   .banner-section__wrapper {
-    width: 95%;
-  }
-
-  .banner-section__wrapper img {
-    height: 10px;
+    width: 100%;
   }
 
   /* economy section */
   .economy-section__text {
     width: 90%;
-  }
-
-  .economy-section__box {
-    width: 85%;
-    height: 500px;
   }
 
   .economy-section__box__token-group {
@@ -1751,5 +1776,146 @@ img[src="./assets/images/epic-icon.png"] {
 
   .collect-golem-section__card {
     height: 705px;
+  }
+}
+
+@media (max-width: 665px) {
+  .collect-golem-section__card__arrays {
+    display: none;
+  }
+
+  .collect-golem-section__card__golem-infos {
+    position: absolute;
+    top: 40px;
+    left: 137px;
+  }
+}
+
+@media (max-width: 576px) {
+  .video-background {
+    height: 95vh;
+  }
+  .header-content {
+    height: 70%;
+  }
+
+  .header-content h1 {
+    font-size: 3.3em;
+  }
+
+  .header-content__logo__anazir-logo {
+    height: 203px;
+  }
+
+  .header-content__app-logos a img {
+    height: 44px;
+  }
+
+  .header-content__logo__circle {
+    top: -20%;
+    right: 5%;
+  }
+
+  .social-media-logo {
+    justify-content: center;
+    width: 100%;
+    padding: 0px;
+    right: 0px;
+    bottom: 15%;
+    z-index: 3;
+  }
+
+  .social-media-logo svg {
+    height: 38px;
+  }
+
+  /*banner section */
+  .banner-section {
+    height: 100%;
+    padding: 30px 0px;
+  }
+
+  .banner-section__wrapper {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .banner-section p {
+    font-size: 1.2em;
+  }
+
+  .banner-section__wrapper img {
+    height: unset;
+  }
+
+  .banner-section__alphabet-background {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes de largeur égale */
+    grid-template-rows: repeat(4, auto); /* 4 lignes de hauteur automatique */
+    justify-items: center;
+  }
+
+  .banner-section__alphabet-background {
+    font-size: 7em;
+  }
+
+  .economy-section__text h2 {
+    font-size: 1.8em;
+  }
+
+  .economy-section__center {
+    width: 100%;
+  }
+
+  .economy-section .button {
+    width: 95%;
+    font-size: 1.1em;
+  }
+
+  .economy-section__box {
+    width: 95%;
+  }
+
+  .economy-section__box__token-group {
+    display: none;
+  }
+
+  .economy-section__box__ready {
+    font-size: 1.5em;
+    width: 60%;
+  }
+
+  .economy-section__box__lauchpads__icons {
+    flex-wrap: wrap;
+  }
+
+  .economy-section__box__token {
+    font-size: 2.3em;
+  }
+
+  .game-infos-section__golem-img {
+    bottom: -226px;
+    right: unset;
+  }
+
+  .game-infos-section__background-img {
+    height: 68%;
+  }
+
+  .game-infos-section__play-anazir {
+    position: unset;
+  }
+
+  .game-infos-section__wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .game-infos-section__token-group {
+    margin-top: 30px;
+  }
+
+  .game-infos-section h2 {
+    width: 90%;
+    text-align: center;
   }
 }
