@@ -156,6 +156,7 @@ a {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
 }
 
 .economy-section__background-img {
@@ -306,17 +307,20 @@ a {
 .game-infos-section {
   margin-top: 30px;
   position: relative;
+  overflow: hidden;
 }
 
 .game-infos-section__upper {
   height: 90vh;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .game-infos-section__golem-img {
   position: absolute;
   right: 11%;
-  top: -250px;
+  bottom: -158px;
   z-index: 1;
 }
 
@@ -330,7 +334,7 @@ a {
 
 .game-infos-section__background-img {
   width: 100%;
-  height: 110%;
+  height: 114%;
   position: absolute;
   z-index: -6;
 }
@@ -470,7 +474,7 @@ a {
 
 .collect-golem-section__selector {
   position: absolute;
-  left: -31px;
+  left: -30px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1117,6 +1121,14 @@ img[src="./assets/images/epic-icon.png"] {
 
 /* --------------------------------------------------------------*/
 @media (max-width: 1400px) {
+  /* game infos section*/
+  .game-infos-section__background-img {
+    width: 119%;
+    height: 115%;
+    position: absolute;
+    z-index: -6;
+  }
+
   /* ----- collect golem section -----*/
   .collect-golem-section__wrapper {
     transform: translateX(25px);
@@ -1335,7 +1347,6 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   /*----- economy section -----*/
-
   .economy-section__center {
     flex-direction: column;
     gap: 13%;
@@ -1357,15 +1368,17 @@ img[src="./assets/images/epic-icon.png"] {
 
   /* game infos section */
 
+  .game-infos-section__background-img {
+    object-fit: cover;
+    height: 95%;
+  }
+
   .game-infos-section__wrapper.game-infos-section__translateY {
     gap: 4%;
   }
 
   .game-infos-section__card-box-img {
     height: 334px;
-  }
-  .game-infos-section__golem-img {
-    top: -208px;
   }
 
   .game-infos-section h2 {
@@ -1395,23 +1408,19 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .game-infos-section__golem-img {
-    top: -357px;
-  }
-
-  .game-infos-section__background-img {
-    height: 80%;
+    bottom: -275px;
   }
 
   .game-infos-section__phone__gameplay-img {
-    top: 38px;
+    top: 58px;
   }
 
   .game-infos-section__phone__img {
-    top: 25px;
+    top: 45px;
   }
 
   .game-infos-section__play-anazir {
-    top: 27%;
+    top: 30%;
     left: 24%;
   }
 
@@ -1420,16 +1429,51 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   /* collect golem section */
-
   .collect-golem-section__card {
     width: 90%;
     height: 800px;
+  }
+
+  .collect-golem-section__selector__wrapper {
+    position: relative;
+    position: absolute;
+    bottom: -39px;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .collect-golem-section__selector-background {
+    position: absolute;
+    height: unset;
+    width: 92px;
+    z-index: 1;
+    top: -242px;
+    left: unset;
+    transform: rotateZ(90deg);
+  }
+
+  .collect-golem-section__selector img {
+    height: 66px;
+  }
+
+  .collect-golem-section__selector {
+    position: absolute;
+    flex-direction: row;
+    left: unset;
+    gap: 15px;
+    top: -8px;
   }
 
   .collect-golem-section__card__fairy {
     top: -105px;
     right: -32px;
     height: 189px;
+  }
+
+  .collect-golem-section__wrapper {
+    transform: translateX(0px);
   }
 
   .collect-golem-section__card__arrays {
@@ -1448,22 +1492,6 @@ img[src="./assets/images/epic-icon.png"] {
 
   .collect-golem-section__card__wrapper-center {
     gap: 7%;
-  }
-
-  .collect-golem-section__selector-background {
-    height: 80%;
-    width: 106px;
-    top: 60%;
-    left: 43%;
-    transform: rotateZ(90deg);
-  }
-
-  .collect-golem-section__selector {
-    position: absolute;
-    left: 194px;
-    flex-direction: row;
-    gap: 15px;
-    top: 95%;
   }
 
   .masked-video {
@@ -1510,7 +1538,6 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   /* roadmap section */
-
   .roadmap-section {
     height: 100%;
     display: flex;
@@ -1586,14 +1613,12 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   /* joins us section */
-
   .threevision-section p {
     font-size: 2.1em;
     width: 90%;
   }
 
   /* threevisition section */
-
   .joins-us-section {
     gap: 38px;
   }
@@ -1630,7 +1655,8 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .economy-section__box {
-    width: 75%;
+    width: 85%;
+    height: 500px;
   }
 
   .economy-section__box__token-group {
@@ -1642,7 +1668,6 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   /* game infos section */
-
   .game-infos-section__phone__gameplay-img {
     top: 38px;
     right: 8%;
@@ -1659,7 +1684,6 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   /* collect golem section */
-
   .collect-golem-section__card__video {
     margin-left: 3px;
   }
@@ -1720,12 +1744,12 @@ img[src="./assets/images/epic-icon.png"] {
   .collect-golem-section__card__wrapper-center {
     gap: 0px;
   }
-}
 
-.array-title {
-  left: unset;
-}
+  .array-title {
+    left: unset;
+  }
 
-.collect-golem-section__card {
-  height: 705px;
+  .collect-golem-section__card {
+    height: 705px;
+  }
 }
