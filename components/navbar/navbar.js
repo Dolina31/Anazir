@@ -28,7 +28,7 @@ function navbar() {
           "https://play.google.com/store/apps/details?id=com.Threevision.AnazirGame";
         googleLogo.src = "/assets/images/google-store-logo.png";
         googleLogo.alt = "Logo du google play store";
-        googleLogo.classList.add("google-logo"); // Ajout d'une classe pour vérification future
+        googleLogo.classList.add("google-logo"); // Ajout d'une classe
         googleLogoLink.appendChild(googleLogo);
         mobileMenu.appendChild(googleLogoLink);
 
@@ -38,7 +38,7 @@ function navbar() {
         const appleLogo = document.createElement("img");
         appleLogo.src = "/assets/images/apple-store-logo.png";
         appleLogo.alt = "Logo de l'apple store";
-        appleLogo.classList.add("apple-logo"); // Ajout d'une classe pour vérification future
+        appleLogo.classList.add("apple-logo"); // Ajout d'une classe
         appleLogoLink.appendChild(appleLogo);
         mobileMenu.appendChild(appleLogoLink);
       }

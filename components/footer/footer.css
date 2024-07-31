@@ -95,6 +95,10 @@ ul a:hover {
   gap: 20px;
 }
 
+.footer__app-logos img {
+  height: 50px;
+}
+
 @media (max-width: 1024px) {
   .footer__nav__ul {
     gap: 11px;
@@ -118,20 +122,28 @@ ul a:hover {
     flex-direction: column;
     gap: 35px;
   }
+
   .footer__social-media-logo__ul {
     gap: 15px;
   }
+
   .footer-under-line-section {
     flex-direction: column;
     gap: 35px;
   }
+
   .footer-legal-info {
     flex-direction: column;
     gap: 20px;
     font-size: 0.9em;
   }
+
   .footer-under-line-section_logos {
     height: 100px;
     justify-content: center;
+  }
+
+  .footer__app-logos img {
+    height: 45px;
   }
 }

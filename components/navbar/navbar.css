@@ -69,6 +69,7 @@ header ul a:hover {
     font-size: 1.5em;
     z-index: -3;
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -102,7 +103,7 @@ header ul a:hover {
     position: absolute;
     bottom: 10%;
     display: flex;
-    height: 60px;
+    height: 50px;
     padding: 9px;
     border: 3px solid white;
     border-radius: 50%;
@@ -171,15 +172,15 @@ header ul a:hover {
   }
 
   header ul a {
-    font-size: 1.4em;
+    font-size: 1em;
   }
 
   .google-logo,
   .apple-logo {
-    height: 65px;
+    height: 58px;
   }
 
   .navbar__mobile-menu__close-item {
-    position: relative;
+    bottom: 13%;
   }
 }
