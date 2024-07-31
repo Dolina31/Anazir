@@ -1377,6 +1377,11 @@ img[src="./assets/images/epic-icon.png"] {
 
   /*----- economy section -----*/
 
+  .economy-section {
+    height: 78vh;
+    margin-bottom: 300px;
+  }
+
   .economy-section__center {
     flex-direction: column;
     gap: 13%;
@@ -1435,7 +1440,6 @@ img[src="./assets/images/epic-icon.png"] {
 
   .game-infos-section__evolution-arrow {
     height: 50px;
-    transform: translateX(12px);
   }
 
   .game-infos-section__golem-nft {
@@ -1443,7 +1447,7 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .game-infos-section__golem-img {
-    bottom: -259px;
+    bottom: -33%;
   }
 
   .game-infos-section__phone__gameplay-img {
@@ -1545,6 +1549,11 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   /* slider section */
+  .slider-section {
+    height: auto;
+    margin-bottom: 200px;
+  }
+
   .slider-alphabet-backgound {
     display: none;
   }
@@ -1558,6 +1567,7 @@ img[src="./assets/images/epic-icon.png"] {
 
   .slider {
     width: 90%;
+    height: 390px;
   }
 
   .slide__side-image__position-left {
@@ -1792,9 +1802,6 @@ img[src="./assets/images/epic-icon.png"] {
 }
 
 @media (max-width: 576px) {
-  .video-background {
-    height: 95vh;
-  }
   .header-content {
     height: 70%;
   }
@@ -1817,12 +1824,7 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .social-media-logo {
-    justify-content: center;
-    width: 100%;
-    padding: 0px;
-    right: 0px;
     bottom: 15%;
-    z-index: 3;
   }
 
   .social-media-logo svg {
@@ -1859,6 +1861,15 @@ img[src="./assets/images/epic-icon.png"] {
     font-size: 7em;
   }
 
+  .economy-section {
+    height: 69vh;
+  }
+
+  .game-infos-section__golem-img {
+    bottom: -298px;
+    right: unset;
+  }
+
   .economy-section__text h2 {
     font-size: 1.8em;
   }
@@ -1893,11 +1904,21 @@ img[src="./assets/images/epic-icon.png"] {
     font-size: 2.3em;
   }
 
-  .game-infos-section__golem-img {
-    bottom: -226px;
-    right: unset;
+  .game-infos-section__upper {
+    height: 73vh;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 30px;
   }
 
+  .game-infos-section__phone__gameplay-img {
+    position: unset;
+  }
+
+  .game-infos-section__phone__img {
+    top: 327px;
+    right: 20%;
+  }
   .game-infos-section__background-img {
     height: 68%;
   }
@@ -1910,6 +1931,23 @@ img[src="./assets/images/epic-icon.png"] {
     flex-direction: column-reverse;
   }
 
+  .game-infos-wrapper-2 {
+    flex-direction: column;
+  }
+
+  .game-infos-section__evolution-arrow {
+    height: 50px;
+    transform: translateX(8px);
+  }
+
+  .game-infos-section__golem-normal {
+    height: 103px;
+  }
+
+  .game-infos-section__golem-nft {
+    height: 170px;
+  }
+
   .game-infos-section__token-group {
     margin-top: 30px;
   }
@@ -1917,5 +1955,110 @@ img[src="./assets/images/epic-icon.png"] {
   .game-infos-section h2 {
     width: 90%;
     text-align: center;
+  }
+
+  .collect-golem-section__background-img {
+    width: 264%;
+  }
+
+  .collect-golem-section__card__fairy {
+    display: none;
+  }
+
+  .slider {
+    height: 100%;
+    padding-bottom: 20px;
+  }
+
+  .slider__container {
+    flex-direction: column;
+    width: 95%;
+    transform: unset;
+  }
+
+  .slide__side-image__position-left,
+  .slide__side-image__position-right {
+    display: none;
+  }
+
+  .slider-left-arrow {
+    z-index: 1;
+  }
+
+  .turret-funtion-image {
+    height: 292px;
+    z-index: 0;
+  }
+
+  .acorce-image {
+    height: 370px;
+  }
+
+  .hero-cards-image {
+    height: 354px;
+  }
+
+  .slider-arrow-border {
+    width: 54px;
+    height: 54px;
+  }
+
+  .slide {
+    display: flex;
+    justify-content: center;
+  }
+
+  .slider-arrow-border img {
+    cursor: pointer;
+    height: 25px;
+  }
+
+  .slide__title {
+    font-size: 0.9em;
+  }
+
+  .slide__text {
+    font-size: 1.3em;
+    margin-top: 0px;
+  }
+
+  .dot {
+    padding: 8px;
+  }
+
+  .roadmap__phase__indicators {
+    display: none;
+  }
+
+  .roadmap-section__wrapper {
+    transform: unset;
+    width: 100%;
+  }
+
+  .roadmap__phases__wrapper {
+    width: 95%;
+  }
+
+  .roadmap__phase__content p {
+    font-size: 1.1em;
+  }
+
+  .partner-section {
+    height: 100%;
+    padding-bottom: 50px;
+  }
+
+  .partners a img {
+    height: 35px;
+  }
+
+  .joins-us-section {
+    flex-direction: column;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .joins-us-section__text {
+    width: 90%;
   }
 }

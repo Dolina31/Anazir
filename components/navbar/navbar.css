@@ -102,7 +102,7 @@ header ul a:hover {
     position: absolute;
     bottom: 10%;
     display: flex;
-    height: 22px;
+    height: 60px;
     padding: 9px;
     border: 3px solid white;
     border-radius: 50%;
@@ -168,5 +168,18 @@ header ul a:hover {
 @media (max-width: 576px) {
   .navbar__app-logos a {
     display: none;
+  }
+
+  header ul a {
+    font-size: 1.4em;
+  }
+
+  .google-logo,
+  .apple-logo {
+    height: 65px;
+  }
+
+  .navbar__mobile-menu__close-item {
+    position: relative;
   }
 }
