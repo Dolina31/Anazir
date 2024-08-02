@@ -1,7 +1,3 @@
-* {
-  margin: 0;
-}
-
 header {
   font-family: arpona, serif;
 }
@@ -90,7 +86,7 @@ header ul a:hover {
 
   .navbar__mobile-menu.active {
     opacity: 1;
-    z-index: 3;
+    z-index: 999;
     top: 0;
     transition:
       opacity 0.3s ease-out,
