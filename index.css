@@ -15,7 +15,6 @@ body {
   font-family: arpona, serif;
   color: #e7e3db;
   background-color: #0f0f0c;
-  margin: 0;
   background-image: url("./assets/images/background-texture.png");
 }
 
@@ -164,7 +163,7 @@ a {
   font-size: 6em;
   position: absolute;
   height: 100%;
-  width: 104%;
+  width: 100%;
 }
 
 .banner-section__wrapper {
@@ -1763,7 +1762,6 @@ img[src="./assets/images/epic-icon.png"] {
 
   /* collect golem section */
   .collect-golem-section__card__video {
-    margin-left: 5px;
     height: 86%;
   }
 
@@ -1847,7 +1845,6 @@ img[src="./assets/images/epic-icon.png"] {
 
 @media (max-width: 706px) {
   .collect-golem-section__card__video {
-    margin-left: 5px;
     height: 85%;
   }
   .collect-golem-section__card__wrapper-center video {
@@ -2069,6 +2066,10 @@ img[src="./assets/images/epic-icon.png"] {
     text-align: center;
   }
 
+  .golem-infos__name {
+    font-size: 2.7em;
+  }
+
   .collect-golem-section__card__wrapper-center {
     gap: 0px;
     justify-content: center;
@@ -2083,8 +2084,8 @@ img[src="./assets/images/epic-icon.png"] {
   }
 
   .collect-golem-section__card__wrapper-center video {
-    width: 97%;
-    height: 109%;
+    width: 103%;
+    height: 113%;
   }
 
   .collect-golem-section__card__arrays {
@@ -2108,6 +2109,10 @@ img[src="./assets/images/epic-icon.png"] {
     width: 100%;
     align-items: center;
     left: unset;
+  }
+
+  .slider-section {
+    margin-top: 80px 0px;
   }
 
   .slider {
@@ -2261,17 +2266,18 @@ img[src="./assets/images/epic-icon.png"] {
 
 @media (max-width: 419px) {
   .masked-video {
-    mask-image: url(/assets/images/card-video-cache-tablette.png);
+    mask-image: url(/assets/images/card-video-cache-mobile2.png);
+    -webkit-mask-position-x: center;
   }
 
-  .collect-golem-section__card__wrapper-center video {
-    width: 111%;
-    height: 114%;
-  }
-
-  .collect-golem-section__card__wrapper-center {
-    gap: 0px;
+  .collect-golem-section__card__video {
     justify-content: center;
+    width: 100%;
+    margin-left: unset;
+  }
+  .collect-golem-section__card__wrapper-center video {
+    width: 100%;
+    height: 114%;
   }
 
   .collect-golem-section__selector__wrapper {
@@ -2298,5 +2304,17 @@ img[src="./assets/images/epic-icon.png"] {
   .collect-golem-section__card {
     width: 96%;
     height: 720px;
+  }
+}
+
+@media (max-width: 350px) {
+  .collect-golem-section__card__wrapper-center video {
+    width: 111%;
+    height: 110%;
+  }
+
+  .collect-golem-section__card {
+    width: 96%;
+    height: 649px;
   }
 }

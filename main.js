@@ -139,7 +139,7 @@ function displayInfo(id) {
     document.querySelector(".health").textContent = health;
     document.querySelector(".speed").textContent = speed;
   } else {
-    document.querySelector(".test").textContent = "No data found";
+    console.log("No data found");
   }
 }
 

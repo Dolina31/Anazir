@@ -30,7 +30,7 @@ header ul a {
   align-items: center;
   font-weight: bold;
   gap: 4px;
-  color: white;
+  color: #e7e3db;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
@@ -51,6 +51,18 @@ header ul a:hover {
 
 .navbar__mobile-menu__close-item {
   display: none;
+}
+
+.navbar__mobile-menu__logos__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar__mobile-menu__logos__wrapper img {
+  height: 62px;
 }
 
 @media (max-width: 1200px) {
@@ -96,14 +108,13 @@ header ul a:hover {
   }
 
   .navbar__mobile-menu__close-item {
-    position: absolute;
-    bottom: 10%;
     display: flex;
     height: 50px;
     padding: 9px;
     border: 3px solid white;
     border-radius: 50%;
     cursor: pointer;
+    margin-top: 15px;
   }
 
   .navbar__app-logos {
@@ -139,9 +150,6 @@ header ul a:hover {
     width: 20px;
     height: 3px;
     background-color: #e7e3db;
-    transition:
-      transform 0.5s,
-      opacity 0.5s;
   }
 
   .line1 {
