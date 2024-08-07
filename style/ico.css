@@ -1,23 +1,29 @@
 * {
   font-family: arpona, serif;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   position: relative;
-  padding-top: 40px;
-  padding-bottom: 30px;
-  margin: 40px;
   display: flex;
-  align-items: start;
+  flex-direction: column;
   background-color: rgb(29, 29, 29);
+}
+
+.page-flex {
+  display: flex;
+  margin: 0px 40px;
+  padding-top: 80px;
+  padding-bottom: 30px;
 }
 
 .background-logo {
   z-index: -3;
   position: absolute;
-  top: -85px;
-  right: 22%;
+  top: 26px;
+  right: 25%;
   background-attachment: fixed;
 }
 
@@ -503,7 +509,7 @@ p {
 }
 
 @media (max-width: 1024px) {
-  body {
+  .page-flex {
     flex-direction: column;
     margin: 25px;
   }
@@ -542,7 +548,8 @@ p {
   }
 
   .background-logo {
-    right: -4%;
+    width: 100%;
+    right: unset;
   }
 
   .information__section__buttons {
@@ -577,8 +584,8 @@ p {
 }
 
 @media (max-width: 576px) {
-  body {
-    margin: 15px;
+  .page-flex {
+    margin: 0px 15px;
   }
 
   h1 {

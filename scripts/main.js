@@ -1,14 +1,14 @@
-import "./components/reusable-component";
-import "./components/footer/footer.css";
-import "./components/navbar/navbar.css";
+import "/style/navbar.css";
+import "/scripts/navbar.js";
+import "/style/footer.css";
 
 const golemDataArray = [
   {
     id: "okurus",
     name: "Okurus",
-    motion: "./assets/vidéos/Okorus_Motion.mp4",
-    rarity: "./assets/images/epic-icon.png",
-    type: "./assets/images/type-neutral.png",
+    motion: "/assets/vidéos/Okorus_Motion.mp4",
+    rarity: "/assets/images/epic-icon.png",
+    type: "/assets/images/type-neutral.png",
     turretText: "Coup fatal : invoque 1 Golem sur le chemin adverse",
     invocationText:
       "Invoque 3 golems par niveau de tourelle à l'instant où elle est vendue",
@@ -21,9 +21,9 @@ const golemDataArray = [
   {
     id: "mystone",
     name: "Mystone",
-    motion: "./assets/vidéos/Mystone_Motion.mp4",
-    rarity: "./assets/images/common-icon.png",
-    type: "./assets/images/type-humus.png",
+    motion: "/assets/vidéos/Mystone_Motion.mp4",
+    rarity: "/assets/images/common-icon.png",
+    type: "/assets/images/type-humus.png",
     turretText:
       "Créer une tornade sur le terrain pendant 3s qui inflige des dégâts aux golems qui le traversent.",
     invocationText: "Pas d’effets.",
@@ -36,9 +36,9 @@ const golemDataArray = [
   {
     id: "rusif",
     name: "Rusif",
-    motion: "./assets/vidéos/Rusif_Motion.mp4",
-    rarity: "./assets/images/legendary-icon.png",
-    type: "./assets/images/type-ignis.png",
+    motion: "/assets/vidéos/Rusif_Motion.mp4",
+    rarity: "/assets/images/legendary-icon.png",
+    type: "/assets/images/type-ignis.png",
     turretText:
       "Inflige 50% des dégâts à tous les golems présents derrière la cible en ligne droite",
     invocationText:
@@ -52,9 +52,9 @@ const golemDataArray = [
   {
     id: "famas",
     name: "Famas",
-    motion: "./assets/vidéos/Famas_Motion.mp4",
-    rarity: "./assets/images/legendary-icon.png",
-    type: "./assets/images/type-neutral.png",
+    motion: "/assets/vidéos/Famas_Motion.mp4",
+    rarity: "/assets/images/legendary-icon.png",
+    type: "/assets/images/type-neutral.png",
     turretText: "Attaque divisé en rafale de 7 tirs",
     invocationText:
       "À l'apparition : Gagne 7 boucliers qui bloquent l'attaque d'une tourelle",
@@ -67,9 +67,9 @@ const golemDataArray = [
   {
     id: "jaspyro",
     name: "Jaspyro",
-    motion: "./assets/vidéos/Jaspyro_Motion.mp4",
-    rarity: "./assets/images/epic-icon.png",
-    type: "./assets/images/type-humus.png",
+    motion: "/assets/vidéos/Jaspyro_Motion.mp4",
+    rarity: "/assets/images/epic-icon.png",
+    type: "/assets/images/type-humus.png",
     turretText:
       "Touche tous les golems dans une petite zone autour de son attaque",
     invocationText: "à la mort : il se sépare en deux puis encore en deux.",
@@ -82,9 +82,9 @@ const golemDataArray = [
   {
     id: "blicken",
     name: "Blicken",
-    motion: "./assets/vidéos/Blicken_Motion.mp4",
-    rarity: "./assets/images/common-icon.png",
-    type: "./assets/images/type-ignis.png",
+    motion: "/assets/vidéos/Blicken_Motion.mp4",
+    rarity: "/assets/images/common-icon.png",
+    type: "/assets/images/type-ignis.png",
     turretText:
       "Attaque divisée en deux projectiles. Si le coup est fatal : Blicken ré-attaque directement",
     invocationText:
@@ -161,32 +161,32 @@ const slideData = [
   {
     title: "Pleins de golems à collectioner !",
     text: "Débloquez des golems élémentaires rares aux effets uniques et personnaliser votre deck !",
-    image: "./assets/images/slider-cards-img.png",
-    sideImage: "./assets/images/humus_golem.png",
+    image: "/assets/images/slider-cards-img.png",
+    sideImage: "/assets/images/humus_golem.png",
     imageClassName: "cards-types-images",
     sideImagePosition: "slide__side-image__position-left",
   },
   {
     title: "De la compétition !",
     text: "Affrontez des milliers d’autres joueurs et montez dans le classement !",
-    image: "./assets/images/slider-cards-img-2.png",
-    sideImage: "./assets/images/hasa.png",
+    image: "/assets/images/slider-cards-img-2.png",
+    sideImage: "/assets/images/hasa.png",
     imageClassName: "cards-types-images",
     sideImagePosition: "slide__side-image__position-right",
   },
   {
     title: "Facile de prise en main !",
     text: "Vos tourelles génèrent automatiquement des invocations pour attaquer la base adverse ! ",
-    image: "./assets/images/turret-function.png",
-    sideImage: "./assets/images/okurus.png",
+    image: "/assets/images/turret-function.png",
+    sideImage: "/assets/images/okurus.png",
     imageClassName: "turret-funtion-image",
     sideImagePosition: "slide__side-image__position-right",
   },
   {
     title: "Progresser facilement !",
     text: "Montez le niveau de vos golems pour améliorer leurs statistiques ! ",
-    image: "./assets/images/leveling.png",
-    sideImage: "./assets/images/acorce.png",
+    image: "/assets/images/leveling.png",
+    sideImage: "/assets/images/acorce.png",
     imageClassName: "acorce-image",
     sideImagePosition:
       "slide__side-image__position-right responsive-acorce-position",
@@ -194,8 +194,8 @@ const slideData = [
   {
     title: "Des multitudes de stratégies !",
     text: "Choisissez le Héros qui correspond a votre style de jeu",
-    image: "./assets/images/heros-cards-img.png",
-    sideImage: "./assets/images/crustak.png",
+    image: "/assets/images/heros-cards-img.png",
+    sideImage: "/assets/images/crustak.png",
     imageClassName: "hero-cards-image",
     sideImagePosition: "slide__side-image__position-right",
   },
