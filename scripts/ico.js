@@ -23,24 +23,52 @@ const networks = [
     name: "POLYGON",
     cryptos: ["MATIC", "USDC", "USDT"],
     networkId: "0x89",
+    rpcUrl: "https://polygon-rpc.com",
+    chainName: "Polygon",
+    nativeCurrency: {
+      name: "Polygon",
+      symbol: "MATIC",
+      decimals: 18,
+    },
   },
   {
     id: 2,
     name: "ETHEREUM",
     cryptos: ["ETHEREUM", "USDC", "USDT"],
     networkId: "0x1",
+    rpcUrl: "https://cloudflare-eth.com/",
+    chainName: "Ethereum",
+    nativeCurrency: {
+      name: "Ethereum",
+      symbol: "ETH",
+      decimals: 18,
+    },
   },
   {
     id: 3,
     name: "BNB SMART CHAIN",
     cryptos: ["BNB", "USDC", "USDT"],
     networkId: "0x38",
+    rpcUrl: "https://bsc-dataseed.binance.org/",
+    chainName: "Binance Smart Chain",
+    nativeCurrency: {
+      name: "Binance Coin",
+      symbol: "BNB",
+      decimals: 18,
+    },
   },
   {
     id: 4,
     name: "AVALANCHE",
     cryptos: ["AVAX", "USDC", "USDT"],
-    networkId: "0x43114",
+    networkId: "0xA86A",
+    rpcUrl: "https://api.avax.network/ext/bc/C/rpc",
+    chainName: "Avalanche C-Chain Mainnet",
+    nativeCurrency: {
+      name: "Avalanche",
+      symbol: "AVAX",
+      decimals: 18,
+    },
   },
 ];
 
@@ -88,16 +116,45 @@ async function checkNetwork() {
     console.log(chainId);
   }
 }
-
-async function switchNetwork(chainId) {
+async function switchNetwork(network) {
   try {
+    const chainIdHex = Web3.utils.toHex(network.networkId);
+
+    // Vérifiez le réseau actuel
+    const currentChainId = await window.ethereum.request({
+      method: "eth_chainId",
+    });
+    if (currentChainId === chainIdHex) {
+      console.log(`Already on network ${network.name}`);
+      return;
+    }
+
+    // Ajoutez le réseau si nécessaire
+    await window.ethereum.request({
+      method: "wallet_addEthereumChain",
+      params: [
+        {
+          chainId: chainIdHex,
+          chainName: network.chainName,
+          rpcUrls: [network.rpcUrl],
+          nativeCurrency: network.nativeCurrency,
+        },
+      ],
+    });
+
+    // Changez de réseau
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: Web3.utils.toHex(chainId) }],
+      params: [{ chainId: chainIdHex }],
     });
+
+    console.log(`Switched to network ${network.name}`);
     connectButtonchange();
   } catch (error) {
-    console.error(error);
+    console.error("Failed to switch network:", error);
+    alert(
+      "Failed to switch network. Please ensure that the network details are correct."
+    );
   }
 }
 
@@ -170,6 +227,7 @@ function addTokenPurchaseSection() {
       );
 
       if (selectedNetwork) {
+        console.log(`Selected network: ${selectedNetworkName}`);
         const cryptoList = document.querySelector(".crypto-select");
         const selectedCryptoInput = document.querySelector(
           ".select-input__crypto"
@@ -185,16 +243,12 @@ function addTokenPurchaseSection() {
         selectedCryptoInput.textContent = cryptoList.firstChild.textContent;
 
         // Switch network using MetaMask
-        await switchNetwork(selectedNetwork.networkId);
+        await switchNetwork(selectedNetwork);
+      } else {
+        console.error("Network not found");
       }
     }
   });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const defaultNetwork = networks[0].name;
-    initializeCryptoList(defaultNetwork);
-  });
-
   const dropdownContainers = document.querySelectorAll(
     ".connected-wallet__select-input"
   );
