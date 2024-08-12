@@ -337,6 +337,12 @@ p {
   letter-spacing: 0.05em;
 }
 
+.select-crypto__li__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
 .select-input:focus {
   outline: none;
 }
@@ -376,6 +382,7 @@ p {
   flex-direction: column;
   gap: 5px;
 }
+
 .money-to-invest__input p {
   font-size: 1.4em;
   letter-spacing: 0.05em;
@@ -495,10 +502,10 @@ p {
   border-bottom: 2px solid #988b6b;
 }
 
+.select-input__dropdown-content li:hover p,
 .select-input__dropdown-content li:hover {
   color: #988b6b;
 }
-
 .rotate {
   transform: rotate(180deg);
   transition: transform 0.2s ease;

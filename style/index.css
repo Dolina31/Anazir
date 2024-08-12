@@ -152,6 +152,7 @@ a {
   justify-content: center;
   align-items: center;
   width: 100%;
+  z-index: 3;
 }
 
 .banner-section__alphabet-background {
