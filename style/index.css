@@ -62,7 +62,7 @@ header {
 
 .button {
   text-align: center;
-  font-size: 0.9em;
+  font-size: 20px;
   font-weight: bold;
   text-decoration: none;
   color: black;
@@ -118,7 +118,7 @@ a {
   transform: translateY(-39px);
   width: 100%;
   text-align: center;
-  font-size: 2.3em;
+  font-size: 2.6em;
 }
 
 .social-media-logo {
@@ -221,7 +221,7 @@ a {
 }
 
 .economy-section__text h2 {
-  font-size: 2.5em;
+  font-size: 50px;
 }
 
 .economy-section .button {
@@ -369,7 +369,7 @@ a {
 
 .game-infos-section__turret-img {
   position: absolute;
-  height: 350px;
+  height: 530px;
   bottom: -30px;
   left: 30px;
   z-index: 1;
@@ -384,20 +384,21 @@ a {
 
 .game-infos-section__phone__img {
   position: absolute;
-  top: 112px;
+  top: 93px;
   right: 26%;
-  height: 486px;
-  width: 235px;
+  height: 516px;
+  width: 253px;
   transform: translateX(12px);
 }
 
 .game-infos-section__phone__gameplay-img {
   position: absolute;
   right: 26%;
-  top: 128px;
+  top: 109px;
   border-radius: 20px;
-  height: 447px;
-  width: 211px;
+  height: 473px;
+  width: 225px;
+  margin-right: 5px;
 }
 
 .game-infos-section__play-anazir {
@@ -411,7 +412,7 @@ a {
 }
 
 .game-infos-section h2 {
-  font-size: 2.3em;
+  font-size: 50px;
   margin-bottom: 7px;
 }
 
@@ -431,11 +432,11 @@ a {
   transform: translateY(38px);
 }
 .game-infos-section__translateY {
-  transform: translateY(-141px);
+  transform: translateY(-167px);
 }
 
 .game-infos-section__card-box-img {
-  height: 400px;
+  height: 492px;
   top: -5px;
 }
 
@@ -444,19 +445,18 @@ a {
   align-items: center;
 }
 
-.game-infos-section__golem-nft {
-  height: 285px;
-}
-
 .game-infos-section__golem-normal {
-  height: 145px;
+  height: 169px;
 }
 
 .game-infos-section__evolution-arrow {
-  height: 72px;
+  height: 95px;
   transform: translateX(12px);
 }
 
+.game-infos-section__golem-nft {
+  height: 313px;
+}
 .game-infos-section__background-golem {
   height: 720px;
   position: absolute;
@@ -502,10 +502,20 @@ a {
 
 .collect-golem-section__card {
   width: 1079px;
-  height: 490px;
+  height: 540px;
   position: relative;
-  background-color: #ece2cf;
+  background: #fffaf0;
   border: 6px solid #baa884;
+}
+
+.collect-golem-section__card__background-texture {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  opacity: 0.15;
+  z-index: 0;
 }
 
 .collect-golem-section__card__fairy {
@@ -520,8 +530,8 @@ a {
   left: -31px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  top: -10px;
+  gap: 6px;
+  top: 9px;
 }
 
 .collect-golem-section__selector img {
@@ -564,7 +574,7 @@ a {
 }
 
 .collect-golem-section__card__wrapper-center video {
-  width: 90%;
+  width: 98%;
   height: 100%;
   object-fit: cover;
 }
@@ -591,13 +601,13 @@ a {
 }
 
 img[src="/assets/images/epic-icon.png"] {
-  height: 95px;
+  height: 115px;
 }
 
 .golem-infos__name {
   color: #2a2820;
   font-family: ferryman, sans-serif;
-  font-size: 3em;
+  font-size: 70px;
   font-weight: bold;
 }
 
@@ -608,11 +618,11 @@ img[src="/assets/images/epic-icon.png"] {
 }
 
 .golem-infos__rarity {
-  height: 80px;
+  height: 106px;
 }
 
 .golem-infos__type {
-  height: 30px;
+  height: 35px;
   margin-top: 3px;
 }
 
@@ -626,8 +636,8 @@ img[src="/assets/images/epic-icon.png"] {
 
 .turret-array,
 .invocation-array {
-  height: 300px;
-  width: 255px;
+  height: 325px;
+  width: 278px;
   border: 2px solid #c1b69b;
   position: relative;
   display: flex;
@@ -639,11 +649,11 @@ img[src="/assets/images/epic-icon.png"] {
 .turret-arrays__text,
 .invocation-arrays__text {
   font-style: italic;
-  font-size: 0.9em;
+  font-size: 18px;
   font-weight: bold;
   margin-top: 27px;
   text-align: center;
-  width: 94%;
+  width: 96%;
 }
 
 .turret-array {
@@ -685,11 +695,11 @@ img[src="/assets/images/epic-icon.png"] {
 .stat-title {
   color: #5e594b;
   font-weight: bold;
-  font-size: 0.95em;
+  font-size: 18px;
 }
 
 .stat {
-  font-size: 1.4em;
+  font-size: 26px;
   font-weight: bold;
 }
 
@@ -706,7 +716,7 @@ img[src="/assets/images/epic-icon.png"] {
   justify-content: center;
   position: relative;
   width: 1000px;
-  height: 360px;
+  height: 460px;
   position: relative;
   background-color: #ece2cf;
   border: 6px solid #baa884;
@@ -718,7 +728,7 @@ img[src="/assets/images/epic-icon.png"] {
 .slider-alphabet-backgound {
   position: absolute;
   height: 350px;
-  top: 9%;
+  top: 30%;
 }
 
 .slider-arrow-border {
@@ -774,18 +784,18 @@ img[src="/assets/images/epic-icon.png"] {
   align-items: center;
   gap: 25px;
   height: 100%;
-  width: 90%;
+  width: 95%;
   transform: translateX(15px);
 }
 
 .slide__title {
   color: #5e594b;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 25px;
 }
 
 .slide__text {
-  font-size: 2.1em;
+  font-size: 45px;
   color: #2a2820;
   margin-top: 10px;
 }
@@ -800,35 +810,35 @@ img[src="/assets/images/epic-icon.png"] {
 }
 
 .slide__side-image__position-left {
-  left: -18%;
-  bottom: -36%;
-  height: 250px;
+  left: -12%;
+  bottom: -30%;
+  height: 279px;
 }
 
 .slide__side-image__position-right {
   right: -11%;
   bottom: -30%;
-  height: 235px;
+  height: 276px;
 }
 
 .cards-types-images {
-  height: 398px;
+  height: 515px;
   transform: translateY(5px);
 }
 
 .turret-funtion-image {
-  height: 319px;
+  height: 405px;
   transform: translateY(-8px);
 }
 
 .acorce-image {
-  height: 341px;
+  height: 440px;
   transform: translateY(-7px);
   margin-right: 20px;
 }
 
 .hero-cards-image {
-  height: 400px;
+  height: 509px;
 }
 
 .dots {
@@ -840,7 +850,7 @@ img[src="/assets/images/epic-icon.png"] {
 }
 
 .dot {
-  padding: 5px;
+  padding: 8px;
   border-radius: 50%;
   background-color: #c1b69b;
   cursor: pointer;
@@ -1070,7 +1080,7 @@ img[src="/assets/images/epic-icon.png"] {
 
 .threevision-section .button {
   padding: 10px 15px;
-  font-size: 1.05em;
+  font-size: 20px;
 }
 
 .threevision-section__background-logo {
@@ -1200,7 +1210,7 @@ img[src="/assets/images/epic-icon.png"] {
   }
 
   .collect-golem-section__card__wrapper-center video {
-    width: 96%;
+    width: 103%;
   }
 
   .turret-array,

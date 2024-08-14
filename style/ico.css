@@ -372,6 +372,7 @@ p {
 }
 
 .select-crypto__input__balance-value-usd,
+.select-crypto__input__li__balance-value-usd,
 .money-to-invest__input__wrapper--size {
   font-size: 0.7em;
   color: #c1b69b;
@@ -643,9 +644,6 @@ p {
   .invest__section__corner-imgs {
     display: none;
   }
-  .invest__section__prices {
-    flex-direction: column;
-  }
 
   .invest__section__prices__wrapper {
     width: 93%;
@@ -668,8 +666,10 @@ p {
     width: 95%;
   }
 
-  .invest__section__connected-wallet {
+  .invest__section__connected-wallet,
+  .invest__section__prices {
     flex-direction: column;
+    align-items: center;
   }
 
   .connected-wallet__token-purchase {
