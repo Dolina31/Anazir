@@ -5,13 +5,12 @@ import "/style/footer.css";
 const golemDataArray = [
   {
     id: "okurus",
-    name: "Okurus",
+    name: "Okorus",
     motion: "/assets/vidéos/Okorus_Motion.mp4",
     rarity: "/assets/images/epic-icon.png",
     type: "/assets/images/type-neutral.png",
-    turretText: "Coup fatal : invoque 1 Golem sur le chemin adverse",
-    invocationText:
-      "Invoque 3 golems par niveau de tourelle à l'instant où elle est vendue",
+    turretText: "Fatal Strike: Summon 1 Golem on the opponent's path",
+    invocationText: "Summon 3 golems per turret level at the moment it is sold",
     damage: "200",
     rate: "1.5",
     range: "8",
@@ -25,8 +24,8 @@ const golemDataArray = [
     rarity: "/assets/images/common-icon.png",
     type: "/assets/images/type-humus.png",
     turretText:
-      "Créer une tornade sur le terrain pendant 3s qui inflige des dégâts aux golems qui le traversent.",
-    invocationText: "Pas d’effets.",
+      "The projectile creates a whirlwind for 3 seconds. Inflicts damage on passing summons",
+    invocationText: "No effects.",
     damage: "100",
     rate: "1",
     range: "7",
@@ -40,9 +39,9 @@ const golemDataArray = [
     rarity: "/assets/images/legendary-icon.png",
     type: "/assets/images/type-ignis.png",
     turretText:
-      "Inflige 50% des dégâts à tous les golems présents derrière la cible en ligne droite",
+      "The attack ignites a large area, burning any invocations passing through it.",
     invocationText:
-      "Passif : à chaque attaques subits, sa vitesse augmente d'un palier pendant 3 secondes",
+      "Each time it is attacked, its speed increases for 3 seconds.",
     damage: "250",
     rate: "2",
     range: "6",
@@ -55,9 +54,8 @@ const golemDataArray = [
     motion: "/assets/vidéos/Famas_Motion.mp4",
     rarity: "/assets/images/legendary-icon.png",
     type: "/assets/images/type-neutral.png",
-    turretText: "Attaque divisé en rafale de 7 tirs",
-    invocationText:
-      "À l'apparition : Gagne 7 boucliers qui bloquent l'attaque d'une tourelle",
+    turretText: "Attack split into 7-shot bursts",
+    invocationText: "On spawn: Gains 7 shields that block turret attacks",
     damage: "200",
     rate: "1",
     range: "7",
@@ -70,9 +68,9 @@ const golemDataArray = [
     motion: "/assets/vidéos/Jaspyro_Motion.mp4",
     rarity: "/assets/images/epic-icon.png",
     type: "/assets/images/type-humus.png",
-    turretText:
-      "Touche tous les golems dans une petite zone autour de son attaque",
-    invocationText: "à la mort : il se sépare en deux puis encore en deux.",
+    turretText: "inflicts area damage around the target and stuns for 0.5s",
+    invocationText:
+      "On death: it splits in two and then in two again on death.",
     damage: "250",
     rate: "1.5",
     range: "7",
@@ -86,9 +84,9 @@ const golemDataArray = [
     rarity: "/assets/images/common-icon.png",
     type: "/assets/images/type-ignis.png",
     turretText:
-      "Attaque divisée en deux projectiles. Si le coup est fatal : Blicken ré-attaque directement",
+      "Attack split into 2-shot bursts Fatal blow: Relaunches his attack immediately",
     invocationText:
-      "à la mort: boost la vitesse des autres Blicken de 15% (cumulable)",
+      "On death: increases the speed of other blicken on the path by 15% (cumulative)",
     damage: "200",
     rate: "2",
     range: "5",
@@ -159,32 +157,32 @@ if (images.length > 0) {
 
 const slideData = [
   {
-    title: "Pleins de golems à collectioner !",
-    text: "Débloquez des golems élémentaires rares aux effets uniques et personnaliser votre deck !",
+    title: "Tons of golems to collect",
+    text: "Unlock rare elemental golems with unique effects and customize your deck !",
     image: "/assets/images/slider-cards-img.png",
     sideImage: "/assets/images/humus_golem.png",
     imageClassName: "cards-types-images",
     sideImagePosition: "slide__side-image__position-left",
   },
   {
-    title: "De la compétition !",
-    text: "Affrontez des milliers d’autres joueurs et montez dans le classement !",
+    title: "Competition !",
+    text: "Compete against thousands of other players and climb the rankings !",
     image: "/assets/images/slider-cards-img-2.png",
     sideImage: "/assets/images/hasa.png",
     imageClassName: "cards-types-images",
     sideImagePosition: "slide__side-image__position-right",
   },
   {
-    title: "Facile de prise en main !",
-    text: "Vos tourelles génèrent automatiquement des invocations pour attaquer la base adverse ! ",
+    title: "Easy to learn !",
+    text: "Your towers automatically generate summons to attack the opponent ! ",
     image: "/assets/images/turret-function.png",
     sideImage: "/assets/images/okurus.png",
     imageClassName: "turret-funtion-image",
     sideImagePosition: "slide__side-image__position-right",
   },
   {
-    title: "Progresser facilement !",
-    text: "Montez le niveau de vos golems pour améliorer leurs statistiques ! ",
+    title: "Easy progression !",
+    text: "Level up your golems to improve their stats !",
     image: "/assets/images/leveling.png",
     sideImage: "/assets/images/acorce.png",
     imageClassName: "acorce-image",
@@ -192,8 +190,8 @@ const slideData = [
       "slide__side-image__position-right responsive-acorce-position",
   },
   {
-    title: "Des multitudes de stratégies !",
-    text: "Choisissez le Héros qui correspond a votre style de jeu",
+    title: "Multitudes of strategies !",
+    text: "Choose the hero that best suits your play style",
     image: "/assets/images/heros-cards-img.png",
     sideImage: "/assets/images/crustak.png",
     imageClassName: "hero-cards-image",

@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="https://use.typekit.net/uog8olw.css" />
 
     <title>ICO Page</title>
-    <script type="module" crossorigin src="/assets/ico-BI0jG_zL.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/footer-DqCJe3VR.js">
-    <link rel="stylesheet" crossorigin href="/assets/footer-0sTEXLa7.css">
-    <link rel="stylesheet" crossorigin href="/assets/ico-BwFECM_1.css">
+    <script type="module" crossorigin src="/assets/ico-BJZgqaV1.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/footer-DX14fc1h.js">
+    <link rel="stylesheet" crossorigin href="/assets/footer-DTLuAKUk.css">
+    <link rel="stylesheet" crossorigin href="/assets/ico-IPGr-k8q.css">
   </head>
   <body>
     <header>
@@ -50,7 +50,7 @@
             </li>
             <li>
               <a href="https://www.threevisionstudio.com/" target="_blank"
-                >LE STUDIO
+                >STUDIO
                 <img
                   src="/assets/images/redirection-arrow.png"
                   class="redirection_arrow"
@@ -91,21 +91,23 @@
       </nav>
     </header>
     <main class="page-flex">
-      <img
-        src="../../assets/images/logo-2.png"
-        alt="logo grisé du jeux Anazir"
-        class="background-logo"
-      />
+      <div class="background-logo__position">
+        <img
+          src="../../assets/images/logo-2.png"
+          alt="logo grisé du jeux Anazir"
+          class="background-logo"
+        />
+      </div>
       <div class="information__section">
         <div class="information__section__preseed--wrapper">
           <span class="information__section__preseed__circle"></span>
-          <p>LA PRE-SEED EST OUVERTE !</p>
+          <p>THE PRE-SEED IS OPEN !</p>
         </div>
         <h1>
           Anazir, an original web3 game built to compete in the mass market.
         </h1>
         <div class="information__section__polygon-info">
-          <p>Réseau : Polygon</p>
+          <p>Network : Polygon</p>
           <p>5% TGE / 12m vesting / 6m cliff</p>
         </div>
 
@@ -114,8 +116,8 @@
             class="information__section__buttons--blue"
             href="https://anazirgame.gitbook.io/whitepaper-anazir/economy/tokenomics-and-distributions"
             target="_blank"
-            >VOIR LES TOKENOMICS $ANZ</a
-          >
+            >SEE $ANZ TOKENOMICS
+          </a>
           <a
             class="information__section__buttons--beige"
             href="#"
@@ -159,12 +161,12 @@
             />
           </div>
 
-          <h2>investissez maintenant en Preseed !</h2>
+          <h2>invest now in Preseed !</h2>
 
           <div class="invest__section__prices">
             <div class="invest__section__prices__wrapper">
               <p class="invest__section__prices__number">0.0062</p>
-              <p class="invest__section__prices__info">Prix actuel</p>
+              <p class="invest__section__prices__info">Current price</p>
             </div>
             <div class="invest__section__prices__wrapper">
               <p class="invest__section__prices__number">0.008</p>
@@ -174,22 +176,22 @@
           <div class="invest__section__objectif">
             <span class="invest__section__objectif-bar"></span>
             <p class="invest__section__objectif-bar__statut">
-              <span>Objectif :</span> 65 200 $ / 93 000 $
+              <span>Goal :</span> 65 200 $ / 93 000 $
             </p>
           </div>
           <div class="invest__section__connect-wallet__text">
             <p>
-              Pour investir,<br />
-              connectez votre wallet
+              To invest,<br />
+              connect your wallet
             </p>
             <template id="purchase-token-section">
               <div class="connected-wallet__token-purchase">
                 <div class="connected-wallet__select-input">
-                  <label>Selectionnez le réseau</label>
+                  <label>Select your network :</label>
                   <div class="input__wrapper">
                     <div class="select-input input">
                       <p class="select-input__selected-value">
-                        Sélectionnez votre résau
+                        Select your network
                       </p>
                       <ul
                         class="select-input__dropdown-content network-select"
@@ -209,7 +211,7 @@
                 </div>
 
                 <div class="connected-wallet__select-input">
-                  <label>Vous investissez en :</label>
+                  <label>You are investing in:</label>
 
                   <div class="input__wrapper">
                     <div class="select-input input">
@@ -243,7 +245,7 @@
                 </div>
 
                 <div class="connected-wallet__money-to-invest__wrapper">
-                  <label for="money-to-invest">Montant investi :</label>
+                  <label for="money-to-invest">Amount invested:</label>
                   <div class="money-to-invest__input input">
                     <input
                       type="number"
@@ -263,7 +265,7 @@
                 </div>
               </div>
               <div class="connected-wallet__token-amount">
-                <p>Vous recevez en $ANZ</p>
+                <p>You will receive in $ANZ</p>
                 <div class="token-amount__wrapper">
                   <p>0</p>
                   <img
@@ -275,26 +277,28 @@
                   <span class="token-amount__max-amount__line"></span>
                   <p class="token-amount__max-amount">15 000 000</p>
                   <p class="token-amount__max-amount__info">
-                    Token alloués pressed
+                    Allocated tokens pressed
                   </p>
                 </div>
               </div>
             </template>
           </div>
           <button class="invest__section__connect-wallet__button">
-            CONNECTEZ SON WALLET
+            CONNECT YOUR WALLET
           </button>
           <p class="invest__section__connect-wallet__error-message">
-            Veuillez installer MetaMask
+            please install MetaMask
           </p>
         </div>
         <div class="invest__section__buttons">
-          <button>VOS TRANSACTIONS</button>
+          <a href="transactions.html"><button>TRANSACTIONS</button></a>
           <button class="invest__section__buttons__disconnect">
-            SE DÉCONNECTER
+            DISCONNECT
           </button>
         </div>
       </div>
+
+      <dialog close class="modal"></dialog>
     </main>
     <footer class="footer">
       <div class="footer-upper-line-section">
@@ -342,7 +346,7 @@
 
             <li>
               <a href="https://www.threevisionstudio.com/" target="_blank"
-                >LE STUDIO
+                >STUDIO
               </a>
             </li>
           </ul>

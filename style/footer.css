@@ -7,6 +7,7 @@ footer {
   flex-direction: column;
   align-items: center;
   background-color: black;
+  z-index: 0;
 }
 
 .footer-upper-line-section {

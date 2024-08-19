@@ -3,12 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style/ico.css" />
     <link rel="stylesheet" href="/style/navbar.css" />
     <link rel="stylesheet" href="/style/footer.css" />
+    <link rel="stylesheet" href="/style/transactions.css" />
     <link rel="stylesheet" href="https://use.typekit.net/uog8olw.css" />
-
-    <title>ICO Page</title>
+    <title>Transactions</title>
   </head>
   <body>
     <header>
@@ -89,220 +88,44 @@
         </div>
       </nav>
     </header>
-    <main class="page-flex">
-      <div class="background-logo__position">
+    <main>
+      <div class="transactions__background-logo__position">
         <img
-          src="../../assets/images/logo-2.png"
-          alt="logo grisé du jeux Anazir"
-          class="background-logo"
+          src="/assets/images/logo-2.png"
+          alt="Logo de Anazir"
+          class="transactions__background-logo"
         />
       </div>
-      <div class="information__section">
-        <div class="information__section__preseed--wrapper">
-          <span class="information__section__preseed__circle"></span>
-          <p>THE PRE-SEED IS OPEN !</p>
-        </div>
-        <h1>
-          Anazir, an original web3 game built to compete in the mass market.
-        </h1>
-        <div class="information__section__polygon-info">
-          <p>Network : Polygon</p>
-          <p>5% TGE / 12m vesting / 6m cliff</p>
-        </div>
-
-        <div class="information__section__buttons">
-          <a
-            class="information__section__buttons--blue"
-            href="https://anazirgame.gitbook.io/whitepaper-anazir/economy/tokenomics-and-distributions"
-            target="_blank"
-            >SEE $ANZ TOKENOMICS
-          </a>
-          <a
-            class="information__section__buttons--beige"
-            href="#"
-            target="_blank"
-            >SMART CONTRACT</a
-          >
-        </div>
+      <div class="transactions__return-button">
+        <a href="ico.html"
+          ><img
+            src="/assets/images/transactions-return-arrow.png"
+            alt="fléche pointant vers la gauche"
+        /></a>
+        <p>RETURN</p>
       </div>
-      <div class="invest__section__container">
-        <div class="invest__section">
-          <img
-            src="../../assets/images/TOKEN.png"
-            alt="Logo du jeux vidéo mobile Anazir"
-            class="invest__section__token-img"
-          />
-          <img
-            src="../../assets/images/stars-img.png"
-            alt="trois petites etoiles jaunes brillantes"
-            class="invest__section__stars-img"
-          />
-          <div class="invest__section__corner-imgs">
-            <img
-              src="../../assets/images/wallet-block_img-bottom-right.png"
-              alt=""
-              class="invest__section__corner-img--bottom-right"
-            />
-            <img
-              src="../../assets/images/wallet-block_img-bottom-left.png"
-              alt=""
-              class="invest__section__corner-img--bottom-left"
-            />
-            <img
-              src="../../assets/images/wallet-block_img-top-right.png"
-              alt=""
-              class="invest__section__corner-img--top-right"
-            />
-            <img
-              src="../../assets/images/wallet-block_img-top-left.png"
-              alt=""
-              class="invest__section__corner-img--top-left"
-            />
-          </div>
-
-          <h2>invest now in Preseed !</h2>
-
-          <div class="invest__section__prices">
-            <div class="invest__section__prices__wrapper">
-              <p class="invest__section__prices__number">0.0062</p>
-              <p class="invest__section__prices__info">Current price</p>
-            </div>
-            <div class="invest__section__prices__wrapper">
-              <p class="invest__section__prices__number">0.008</p>
-              <p class="invest__section__prices__info">Listing price</p>
-            </div>
-          </div>
-          <div class="invest__section__objectif">
-            <span class="invest__section__objectif-bar"></span>
-            <p class="invest__section__objectif-bar__statut">
-              <span>Goal :</span> 65 200 $ / 93 000 $
-            </p>
-          </div>
-          <div class="invest__section__connect-wallet__text">
-            <p>
-              To invest,<br />
-              connect your wallet
-            </p>
-            <template id="purchase-token-section">
-              <div class="connected-wallet__token-purchase">
-                <div class="connected-wallet__select-input">
-                  <label>Select your network :</label>
-                  <div class="input__wrapper">
-                    <div class="select-input input">
-                      <p class="select-input__selected-value">
-                        Select your network
-                      </p>
-                      <ul
-                        class="select-input__dropdown-content network-select"
-                      ></ul>
-                    </div>
-                    <div class="select-input__wrapper">
-                      <span class="line"></span>
-                      <span class="select-input__down-arrow">
-                        <img
-                          src="../../assets/images/down-arrow-img.png"
-                          alt="flèche blanche pointant vers le bas"
-                          class="select-crypto__input__dropdown-arrow"
-                        />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="connected-wallet__select-input">
-                  <label>You are investing in:</label>
-
-                  <div class="input__wrapper">
-                    <div class="select-input input">
-                      <p
-                        class="select-input__selected-value select-input__crypto"
-                      ></p>
-                      <ul
-                        class="select-input__dropdown-content crypto-select"
-                      ></ul>
-                    </div>
-                    <div class="select-input__wrapper">
-                      <div class="select-crypto__input__current-value__wrapper">
-                        <span
-                          class="select-crypto__input__balance-amount select-crypto__amount-style"
-                        ></span>
-                        <span
-                          class="select-crypto__input__balance-value-usd"
-                        ></span>
-                      </div>
-
-                      <span class="line"></span>
-                      <span class="select-input__down-arrow">
-                        <img
-                          src="../../assets/images/down-arrow-img.png"
-                          alt="flèche blanche pointant vers le bas"
-                          class="select-crypto__input__dropdown-arrow"
-                        />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="connected-wallet__money-to-invest__wrapper">
-                  <label for="money-to-invest">Amount invested:</label>
-                  <div class="money-to-invest__input input">
-                    <input
-                      type="number"
-                      value="0"
-                      id="money-to-invest"
-                      class="input__field"
-                    />
-                    <div class="money-to-invest__input__wrapper">
-                      <span class="money-to-invest__input__wrapper--size"
-                        >≈$0.00</span
-                      >
-                      <button class="money-to-invest__input__wrapper__button">
-                        MAX
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="connected-wallet__token-amount">
-                <p>You will receive in $ANZ</p>
-                <div class="token-amount__wrapper">
-                  <p>0</p>
-                  <img
-                    src="../../assets/images/TOKEN-color.png"
-                    alt="Logo du jeux Anazir sous forme d'une piece de monnaie"
-                  />
-                </div>
-                <div class="token-amount__max-amount__wrapper">
-                  <span class="token-amount__max-amount__line"></span>
-                  <p class="token-amount__max-amount">15 000 000</p>
-                  <p class="token-amount__max-amount__info">
-                    Allocated tokens pressed
-                  </p>
-                </div>
-              </div>
-            </template>
-          </div>
-          <button class="invest__section__connect-wallet__button">
-            CONNECT YOUR WALLET
-          </button>
-          <p class="invest__section__connect-wallet__error-message">
-            please install MetaMask
-          </p>
-        </div>
-        <div class="invest__section__buttons">
-          <a href="transactions.html"><button>TRANSACTIONS</button></a>
-          <button class="invest__section__buttons__disconnect">
-            DISCONNECT
-          </button>
-        </div>
+      <div class="transactions__title">
+        <h1>Transactions</h1>
+        <p>Current balance $ANZ : 0$ANZ</p>
       </div>
 
-      <dialog close class="modal"></dialog>
+      <div class="transactions__infos-details">
+        <p>Date</p>
+        <div class="transactions__infos-middle">
+          <p>Invested</p>
+          <p>$ANZ Price</p>
+          <p>Amount</p>
+        </div>
+        <p>Hash</p>
+      </div>
+
+      <section class="transactions"><p>No transactions</p></section>
     </main>
+
     <footer class="footer">
       <div class="footer-upper-line-section">
         <div class="logo-app-wrapper">
-          <img src="../../assets/images/logo-1.png" alt="" />
+          <a href="#navbar"><img src="/assets/images/logo-1.png" alt="" /></a>
           <div class="footer__app-logos">
             <a
               href="https://play.google.com/store/apps/details?id=com.Threevision.AnazirGame"
@@ -442,7 +265,6 @@
         </div>
       </div>
     </footer>
-    <script type="module" src="/scripts/ico.js"></script>
-    <script type="module" src="/scripts/navbar.js"></script>
+    <script src="/scripts/navbar.js"></script>
   </body>
 </html>

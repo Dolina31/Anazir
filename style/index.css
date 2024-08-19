@@ -47,6 +47,7 @@ header {
   object-fit: cover;
   z-index: 1;
   position: relative;
+  height: 90vh;
 }
 
 .video-background__linear {
@@ -369,10 +370,11 @@ a {
 
 .game-infos-section__turret-img {
   position: absolute;
-  height: 530px;
-  bottom: -30px;
-  left: 30px;
+  height: 573px;
+  bottom: -83px;
+  left: 66px;
   z-index: 1;
+  transform: rotateZ(3deg);
 }
 
 .game-infos-section__background-img {
@@ -408,7 +410,7 @@ a {
 }
 
 .game-infos-section__play-anazir img {
-  height: 35px;
+  height: 39px;
 }
 
 .game-infos-section h2 {
@@ -1177,12 +1179,26 @@ img[src="/assets/images/epic-icon.png"] {
 
 /* --------------------------------------------------------------*/
 @media (max-width: 1400px) {
+  /* economy section*/
+  .economy-section__center {
+    width: 100%;
+  }
+
   /* game infos section*/
+
+  .game-infos-section__play-anazir {
+    left: 22%;
+  }
+
   .game-infos-section__background-img {
     width: 119%;
     height: 115%;
     position: absolute;
     z-index: -6;
+  }
+
+  .game-infos-section__turret-img {
+    height: 374px;
   }
 
   /* ----- collect golem section -----*/
@@ -1280,6 +1296,7 @@ img[src="/assets/images/epic-icon.png"] {
   /* ----economy section -----*/
   .economy-section__center {
     width: 90%;
+    gap: 3px;
   }
 
   .economy-section__box {
@@ -1287,7 +1304,7 @@ img[src="/assets/images/epic-icon.png"] {
   }
 
   .economy-section__text {
-    width: 41%;
+    width: 51%;
   }
 
   /* ----- banner section -----*/
@@ -1466,7 +1483,7 @@ img[src="/assets/images/epic-icon.png"] {
   }
 
   .game-infos-section h2 {
-    font-size: 1.9em;
+    font-size: 35px;
   }
 
   .game-infos-section__token-group {
@@ -1496,15 +1513,19 @@ img[src="/assets/images/epic-icon.png"] {
 
   .game-infos-section__phone__gameplay-img {
     top: 58px;
+    height: 442px;
+    width: 199px;
   }
 
   .game-infos-section__phone__img {
     top: 45px;
+    height: 477px;
+    width: 227px;
   }
 
   .game-infos-section__play-anazir {
     top: 27%;
-    left: 22%;
+    left: 15%;
   }
 
   .game-infos-section__turret-img {
@@ -1630,12 +1651,22 @@ img[src="/assets/images/epic-icon.png"] {
 
   .slider {
     width: 90%;
-    height: 390px;
+    height: 420px;
+  }
+
+  .slide__text {
+    font-size: 35px;
+  }
+
+  .slide__title {
+    color: #5e594b;
+    font-weight: bold;
+    font-size: 20px;
   }
 
   .slide__side-image__position-left {
-    left: -12%;
-    bottom: -31%;
+    left: -10%;
+    bottom: -29%;
     height: 185px;
   }
 
@@ -1643,6 +1674,26 @@ img[src="/assets/images/epic-icon.png"] {
     right: -3%;
     bottom: -27%;
     height: 180px;
+  }
+
+  .cards-types-images {
+    height: 467px;
+    transform: translateY(5px);
+  }
+
+  .acorce-image {
+    height: 395px;
+    transform: translateY(-7px);
+    margin-right: 20px;
+  }
+
+  .hero-cards-image {
+    height: 451px;
+  }
+
+  .turret-funtion-image {
+    height: 326px;
+    transform: translateY(-8px);
   }
 
   /* roadmap section */
@@ -1772,7 +1823,7 @@ img[src="/assets/images/epic-icon.png"] {
 
   .game-infos-section__play-anazir {
     top: 27%;
-    left: 7%;
+    left: 3%;
   }
 
   /* collect golem section */

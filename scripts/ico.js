@@ -1,8 +1,7 @@
 import Web3 from "web3";
 let web3;
 let userAccount;
-let calculatedValue;
-let calculatedValueOfBalance;
+let balanceAmount = 0;
 
 let cryptoValues = [];
 let selectedCrypto = "MATIC";
@@ -174,25 +173,7 @@ async function fetchCryptoValue() {
   }
 }
 
-function connectButtonchange() {
-  const moneyInvestInput = document.querySelector(".input__field");
-  connectWalletButton.textContent = "TICKET MINIMUM : $500";
-
-  moneyInvestInput.addEventListener("input", () => {
-    const inputValue = moneyInvestInput.value;
-
-    if (inputValue >= 500) {
-      connectWalletButton.textContent = "INVESTIR";
-    } else {
-      connectWalletButton.textContent = "TICKET MINIMUM : $500";
-    }
-  });
-}
-
-// Adresse des contrats pour les cryptos ERC20
-
 function formatBalance(balance, decimals = 4, isToken = true) {
-  // Si c'est un token ERC20 ou autre avec précision élevée
   if (isToken) {
     return parseFloat(balance).toFixed(decimals);
   } else {
@@ -227,6 +208,11 @@ async function getTokenBalance(network, tokenName, userAddress) {
 
       if (balanceElement) {
         balanceElement.textContent = formattedBalance;
+      }
+
+      // Mettre à jour balanceAmount pour l'utiliser dans le bouton
+      if (tokenName.toLowerCase() === selectedCrypto.toLowerCase()) {
+        balanceAmount = parseFloat(formattedBalance); // Assurez-vous que balanceAmount est en nombre
       }
 
       console.log(
@@ -295,6 +281,60 @@ async function updateAllCryptoValues() {
   }
 }
 
+function connectButtonchange() {
+  const moneyInvestInput = document.querySelector(".input__field");
+  connectWalletButton.textContent = "MINIMUM TICKET  : $500";
+
+  moneyInvestInput.addEventListener("input", () => {
+    const inputValue = parseFloat(moneyInvestInput.value);
+
+    if (isNaN(inputValue)) {
+      connectWalletButton.textContent = "MINIMUM TICKET  : $500";
+      return;
+    }
+
+    if (inputValue >= 500) {
+      connectWalletButton.textContent = "INVEST";
+      connectWalletButton.addEventListener("click", () => {
+        const modal = document.querySelector(".modal");
+
+        modal.showModal();
+
+        window.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.close();
+          }
+        });
+
+        if (balanceAmount >= inputValue) {
+          modal.innerHTML = `
+          <div class="modal__content">
+            <p>Transaction validé !</p>
+            <span>Vous pouvez à présent consulter votre historique de transaction</span>
+            <a href="transactions.html">HISTORIQUE DE TRANSACTION</a>
+          </div>
+          `;
+        } else {
+          modal.innerHTML = `
+          <div class="modal__content">
+            <p>Solde insuffisant</p>
+            <button class="modal__proceed-button">CONTINUER</button>
+          </div>
+          `;
+          const modalProceedButton = document.querySelector(
+            ".modal__proceed-button"
+          );
+
+          modalProceedButton.addEventListener("click", () => {
+            modal.close();
+          });
+        }
+      });
+    } else {
+      connectWalletButton.textContent = "MINIMUM TICKET  : $500";
+    }
+  });
+}
 // Met à jour le premier élément <li> de la liste des cryptos
 function updateFirstCryptoDisplay() {
   const cryptoList = document.querySelector(".crypto-select");
@@ -314,7 +354,6 @@ function updateFirstCryptoDisplay() {
       ".select-crypto__input__li__balance-value-usd"
     );
 
-    // Assurez-vous que les éléments existent
     if (balanceAmountElement && balanceValueElement) {
       // Copier le montant et la valeur en USD du premier élément
       const balanceAmount = balanceAmountElement.textContent;
@@ -361,16 +400,16 @@ async function switchNetwork(selectedNetwork) {
       });
     }
 
-    // Update the first crypto as selected
+    // Met à jour la première crypto comme sélectionnée
     selectedCrypto = selectedNetwork.cryptos[0];
 
-    // Get the token balances and update UI
+    // Récupère les soldes des tokens et met à jour l'interface utilisateur
     await getBalances(userAccount, selectedNetwork);
 
-    // Reset and update all crypto values
+    // Réinitialise et met à jour toutes les valeurs des cryptos
     await resetAndUpdateAllCryptoValues();
 
-    // Update the value of the first list item
+    // Met à jour la valeur du premier élément de la liste
     updateFirstCryptoDisplay();
     investedMoneyInputValue();
 
@@ -398,7 +437,7 @@ async function connectWallet() {
       await window.ethereum.request({ method: "eth_requestAccounts" });
       web3 = new Web3(window.ethereum);
       const accounts = await web3.eth.getAccounts();
-      userAccount = accounts[0]; // Utilisez le compte connecté
+      userAccount = accounts[0]; // compte de l'utilisateur
 
       fetchCryptoValue();
       checkNetwork();
@@ -409,7 +448,7 @@ async function connectWallet() {
       investedMoneyInputValue();
 
       // Appel pour obtenir les soldes et mettre à jour les valeurs
-      await getBalances(userAccount, networks[0]); // Remplacez `networks[0]` par le réseau par défaut ou sélectionné
+      await getBalances(userAccount, networks[0]);
     } catch (error) {
       console.error(error);
     }
@@ -424,7 +463,6 @@ async function getBalances(userAddress, network) {
     await getTokenBalance(network, token.toLowerCase(), userAddress);
   }
 
-  // Assurez-vous de mettre à jour les valeurs en USD après avoir récupéré les soldes
   await updateAllCryptoValues();
 }
 
@@ -441,7 +479,6 @@ function addTokenPurchaseSection() {
 
   setupNetworkSelection();
   setupDropdowns();
-  setupDocumentClick();
 }
 
 function setupNetworkSelection() {
@@ -455,7 +492,7 @@ function setupNetworkSelection() {
   });
 
   networkSelect.addEventListener("click", async (event) => {
-    if (event.target.tagName !== "LI") return; // Early exit if not clicking on an LI
+    if (event.target.tagName !== "LI") return;
 
     const selectedNetworkName = event.target.textContent.trim();
     const selectedNetwork = networks.find(
@@ -469,12 +506,23 @@ function setupNetworkSelection() {
 
     await updateCryptoList(selectedNetwork);
     await switchNetwork(selectedNetwork);
+
+    // Fermer le menu déroulant après la sélection
+    const dropdownContent = networkSelect.parentElement.querySelector(
+      ".select-input__dropdown-content"
+    );
+    const downArrow = networkSelect.parentElement.querySelector(
+      ".select-input__down-arrow"
+    );
+
+    dropdownContent.classList.remove("show");
+    downArrow.classList.remove("rotate");
   });
 }
 
 async function updateCryptoList(selectedNetwork) {
   const cryptoList = document.querySelector(".crypto-select");
-  cryptoList.innerHTML = ""; // Clear existing crypto list
+  cryptoList.innerHTML = ""; // réinitialise la liste
 
   selectedNetwork.cryptos.forEach((crypto) => {
     const listItem = document.createElement("li");
@@ -487,14 +535,13 @@ async function updateCryptoList(selectedNetwork) {
   });
 
   updateFirstCryptoDisplay();
-
   setupCryptoListClick();
 }
 
 function setupCryptoListClick() {
   const cryptoList = document.querySelector(".crypto-select");
 
-  cryptoList.addEventListener("click", (event) => {
+  cryptoList.addEventListener("click", async (event) => {
     const selectedLi = event.target.closest("li");
 
     if (selectedLi) {
@@ -512,9 +559,10 @@ function setupCryptoListClick() {
       const balanceAmountElement = selectedLi.querySelector(
         ".select-crypto__li__input__balance-amount"
       );
-      const balanceAmount = balanceAmountElement
-        ? parseFloat(balanceAmountElement.textContent)
-        : 0;
+      const balanceAmountText = balanceAmountElement
+        ? balanceAmountElement.textContent
+        : "0";
+      balanceAmount = parseFloat(balanceAmountText);
 
       const balanceValueElement = selectedLi.querySelector(
         ".select-crypto__input__li__balance-value-usd"
@@ -532,7 +580,7 @@ function setupCryptoListClick() {
           ".select-crypto__input__balance-value-usd"
         ).textContent = `≈$${balanceValue}`;
       } else {
-        balanceValueElement.textContent = "error"; // Valeur par défaut si crypto non trouvée
+        balanceValueElement.textContent = "≈$0.00"; // Valeur par défaut si crypto non trouvée
       }
 
       // Mise à jour du champ principal
@@ -542,6 +590,13 @@ function setupCryptoListClick() {
       if (selectedBalanceElement) {
         selectedBalanceElement.textContent = `${balanceAmount.toFixed(4)}`;
       }
+
+      // Mettre à jour le solde de la crypto-monnaie sélectionnée
+      await getTokenBalance(
+        networks.find((n) => n.cryptos.includes(selectedCrypto)),
+        selectedCrypto.toLowerCase(),
+        userAccount
+      );
     }
   });
 }
@@ -562,54 +617,53 @@ function setupDropdowns() {
       ".select-input__selected-value"
     );
 
-    dropdownContainer.addEventListener("click", (event) => {
+    downArrow.addEventListener("click", (event) => {
       event.stopPropagation(); // Empêche la propagation au document
+      closeAllDropdownsExcept(dropdownContainer);
       dropdownContent.classList.toggle("show");
       downArrow.classList.toggle("rotate");
     });
 
+    // Ajoute un écouteur pour les éléments de la liste déroulante
     dropdownContent.addEventListener("click", (event) => {
-      const selectedOption = event.target.textContent;
-      if (selectedOption) {
-        selectedValue.textContent = selectedOption;
+      const target = event.target;
+
+      // Vérifie si l'élément cliqué est un élément de la liste déroulante
+      if (target && target.matches("li")) {
+        // Met à jour la valeur sélectionnée
+        const newValue = target.textContent.trim();
+        selectedValue.textContent = newValue;
+
+        // Ferme le menu déroulant après la sélection
         dropdownContent.classList.remove("show");
         downArrow.classList.remove("rotate");
       }
-      event.stopPropagation(); // Empêche la propagation au document
     });
   });
-}
 
-function setupDocumentClick() {
-  document.addEventListener("click", (event) => {
-    const dropdownContainers = document.querySelectorAll(
-      ".connected-wallet__select-input"
-    );
-
-    dropdownContainers.forEach((dropdownContainer) => {
-      const dropdownContent = dropdownContainer.querySelector(
-        ".select-input__dropdown-content"
-      );
-      const downArrow = dropdownContainer.querySelector(
-        ".select-input__down-arrow"
-      );
-
-      if (!dropdownContainer.contains(event.target)) {
-        // Assurez-vous que le clic n'est pas à l'intérieur du dropdown
-        dropdownContent.classList.remove("show");
-        downArrow.classList.remove("rotate");
+  // Fonction pour fermer tous les menus déroulants sauf celui passé en paramètre (ce qui permet aux deux dropdown de ne pas se chevaucher)
+  function closeAllDropdownsExcept(exception) {
+    dropdownContainers.forEach((container) => {
+      if (container !== exception) {
+        const content = container.querySelector(
+          ".select-input__dropdown-content"
+        );
+        const arrow = container.querySelector(".select-input__down-arrow");
+        if (content) content.classList.remove("show");
+        if (arrow) arrow.classList.remove("rotate");
       }
     });
+  }
+
+  // Fermer les menus déroulants si on clique en dehors
+  document.addEventListener("click", (event) => {
+    closeAllDropdownsExcept(null); // Ferme tous les menus déroulants
   });
 }
 
 function getCryptoPriceInUsd(cryptoName) {
   // Cherche la crypto dans cryptoValues par son nom
   const crypto = cryptoValues.find((c) => c.name === cryptoName.toLowerCase());
-
-  // Log des détails de la recherche
-  console.log(`Recherche du prix de la crypto ${cryptoName.toLowerCase()}:`);
-  console.log(`Résultat trouvé:`, crypto);
 
   // Retourne la valeur ou 0 si la crypto n'est pas trouvée
   return crypto ? crypto.value : 0;
