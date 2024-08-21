@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         ico: resolve(__dirname, "ico.html"),
+        transaction: resolve(__dirname, "transactions.html"),
       },
       output: {
         dir: resolve(__dirname, "dist"),

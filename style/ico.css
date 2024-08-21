@@ -511,8 +511,7 @@ p {
   border-bottom: 2px solid #988b6b;
 }
 
-.select-input__dropdown-content li:hover p,
-.select-input__dropdown-content li:hover {
+.select-input__dropdown-content li:hover p {
   color: #988b6b;
 }
 

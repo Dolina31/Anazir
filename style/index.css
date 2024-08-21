@@ -459,6 +459,7 @@ a {
 .game-infos-section__golem-nft {
   height: 313px;
 }
+
 .game-infos-section__background-golem {
   height: 720px;
   position: absolute;
@@ -602,7 +603,7 @@ a {
   gap: 10px;
 }
 
-img[src="/assets/images/epic-icon.png"] {
+img[src="/assets/images/epic.png"] {
   height: 115px;
 }
 
@@ -620,12 +621,45 @@ img[src="/assets/images/epic-icon.png"] {
 }
 
 .golem-infos__rarity {
-  height: 106px;
+  position: relative;
+}
+
+.golem-infos__rarity__text {
+  position: absolute;
+  font-size: 18px;
+  font-weight: bold;
+  bottom: 7%;
+  width: 100%;
+  text-align: center;
+  font-family: "Ferryman";
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    -2px 0 0 #000,
+    2px 0 0 #000,
+    0 -2px 0 #000,
+    0 2px 0 #000;
+}
+
+.golem-infos__type__wrapper {
+  display: flex;
 }
 
 .golem-infos__type {
-  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 13px;
   margin-top: 3px;
+  background-color: #21201a;
+  border-radius: 20px;
+}
+
+.golem-infos__type__text {
+  font-weight: 700;
+  font-size: 17px;
 }
 
 .collect-golem-section__card__arrays {
@@ -637,7 +671,7 @@ img[src="/assets/images/epic-icon.png"] {
 }
 
 .turret-array,
-.invocation-array {
+.summon-array {
   height: 325px;
   width: 278px;
   border: 2px solid #c1b69b;
@@ -662,15 +696,38 @@ img[src="/assets/images/epic-icon.png"] {
   background-color: #e7e3db;
 }
 
-.invocation-array {
+.summon-array {
   background-color: #ece2cf;
 }
 
 .array-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   height: 37px;
   position: absolute;
   top: -17px;
   left: 58px;
+  padding: 17px 13px;
+  border: 2px solid #c1b69b;
+  border-radius: 20px;
+}
+
+.turret-array .array-title {
+  background-color: #e7e3db;
+}
+
+.summon-array .array-title {
+  background-color: #ece2cf;
+}
+
+.array-title h3 {
+  font-size: 17px;
+}
+
+.array-title img {
+  height: 25px;
 }
 
 .stats-wrapper {
@@ -1230,7 +1287,7 @@ img[src="/assets/images/epic-icon.png"] {
   }
 
   .turret-array,
-  .invocation-array {
+  .summon-array {
     width: 232px;
   }
 
@@ -1534,7 +1591,7 @@ img[src="/assets/images/epic-icon.png"] {
 
   /* collect golem section */
   .collect-golem-section__card {
-    width: 90%;
+    width: 732px;
     height: 742px;
   }
 
@@ -1585,34 +1642,53 @@ img[src="/assets/images/epic-icon.png"] {
   }
 
   .collect-golem-section__card__golem-infos {
-    width: 56%;
+    width: 48%;
     margin-right: 10px;
+    position: absolute;
+    right: 0px;
+  }
+
+  .golem-infos__rarity__img {
+    height: 88px;
+  }
+
+  .golem-infos__name {
+    font-size: 60px;
+  }
+
+  video[src="/assets/vidéos/Okorus_Motion.mp4"] {
+    width: 50% !important;
+  }
+
+  video[src="/assets/vidéos/Rusif_Motion.mp4"] {
+    width: 84% !important;
   }
 
   .turret-array,
-  .invocation-array {
-    width: 100%;
-    height: 236px;
+  .summon-array {
+    width: 103%;
+    height: 250px;
+  }
+
+  .turret-arrays__text,
+  .summon-arrays__text {
+    font-size: 15px;
   }
 
   .stats-wrapper img {
-    height: 28px;
+    height: 38px;
   }
 
   .stat-title {
-    font-size: 0.75em;
+    font-size: 15px;
   }
 
   .stat {
-    font-size: 1.2em;
+    font-size: 20px;
   }
 
   .array-title {
-    left: 35%;
-  }
-
-  .collect-golem-section__card__wrapper-center {
-    gap: 7%;
+    left: 30%;
   }
 
   .masked-video {
@@ -1620,16 +1696,13 @@ img[src="/assets/images/epic-icon.png"] {
   }
 
   .collect-golem-section__card__wrapper-center video {
-    width: 112%;
-    height: 110%;
+    width: 101%;
+    height: 100%;
   }
 
   .collect-golem-section__card__video {
     margin-left: 5px;
-    height: 88%;
-    width: 360px;
-    display: flex;
-    align-items: center;
+    width: unset;
   }
 
   /* slider section */
@@ -1827,8 +1900,108 @@ img[src="/assets/images/epic-icon.png"] {
   }
 
   /* collect golem section */
+  .collect-golem-section__card {
+    width: 539px;
+  }
+
+  video[src="/assets/vidéos/Okorus_Motion.mp4"] {
+    width: 56% !important;
+  }
+
+  .collect-golem-section__card__wrapper-center video {
+    width: 92%;
+    height: 89%;
+  }
+
+  .collect-golem-section__card__wrapper-center {
+    gap: 0px;
+  }
+
+  .array-title {
+    height: unset;
+    padding: 4px 13px;
+    top: -13px;
+    left: unset;
+  }
+
+  .stat-title {
+    font-size: 14px;
+  }
+
+  .stat {
+    font-size: 18px;
+  }
+
+  .collect-golem-section__card {
+    height: 705px;
+  }
+
+  .collect-golem-section__card__golem-infos {
+    width: 47%;
+    margin-right: 10px;
+  }
+
+  .golem-infos__name {
+    font-size: 2em;
+  }
+
+  .collect-golem-section__card__golem-infos__type-wrapper {
+    gap: 10px;
+  }
+
   .collect-golem-section__card__video {
-    height: 86%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .golem-infos__rarity {
+    height: 70px;
+  }
+
+  .golem-infos__rarity__text {
+    bottom: -16%;
+    font-size: 16px;
+  }
+
+  .golem-infos__rarity__img {
+    height: 82px;
+  }
+
+  .golem-infos__type__text {
+    font-size: 13px;
+  }
+
+  .golem-infos__type img {
+    height: 23px;
+  }
+
+  .collect-golem-section__card__golem-infos {
+    width: 41%;
+  }
+
+  .collect-golem-section__card__arrays {
+    flex-direction: column;
+    width: unset;
+  }
+
+  .turret-array,
+  .summon-array {
+    width: 100%;
+    height: 240px;
+  }
+
+  .turret-arrays__text,
+  .invocation-arrays__text {
+    font-size: 0.8em;
+  }
+
+  .array-title h3 {
+    font-size: 14px;
+  }
+
+  .array-title img {
+    height: 19px;
   }
 
   /* slider section */
@@ -1878,75 +2051,6 @@ img[src="/assets/images/epic-icon.png"] {
   }
 }
 
-@media (max-width: 706px) {
-  .collect-golem-section__card__wrapper-center video {
-    width: 98%;
-    height: 108%;
-  }
-
-  .collect-golem-section__card__wrapper-center {
-    gap: 0px;
-  }
-
-  .array-title {
-    left: unset;
-  }
-
-  .collect-golem-section__card {
-    height: 705px;
-  }
-
-  .collect-golem-section__card__golem-infos {
-    width: 45%;
-    margin-right: 10px;
-  }
-
-  .golem-infos__name {
-    font-size: 2.7em;
-  }
-  .collect-golem-section__card__golem-infos__type-wrapper {
-    gap: 10px;
-  }
-}
-
-@media (max-width: 706px) {
-  .collect-golem-section__card__video {
-    height: 85%;
-  }
-  .collect-golem-section__card__wrapper-center video {
-    width: 94%;
-    height: 95%;
-  }
-
-  .collect-golem-section__card__golem-infos {
-    width: 47%;
-    margin-right: 10px;
-  }
-
-  .golem-infos__rarity {
-    height: 70px;
-  }
-
-  .golem-infos__name {
-    font-size: 2em;
-  }
-
-  .collect-golem-section__card__arrays {
-    flex-direction: column;
-    width: unset;
-  }
-
-  .turret-array,
-  .invocation-array {
-    width: 100%;
-    height: 240px;
-  }
-
-  .turret-arrays__text,
-  .invocation-arrays__text {
-    font-size: 0.8em;
-  }
-}
 @media (max-width: 576px) {
   br {
     display: none;
@@ -2140,12 +2244,23 @@ img[src="/assets/images/epic-icon.png"] {
     justify-content: center;
   }
 
+  .collect-golem-section__card {
+    width: 95%;
+  }
+
   .masked-video {
     mask-image: url(/assets/images/card-video-cache-mobile.png);
   }
 
+  video[src="/assets/vidéos/Okorus_Motion.mp4"],
+  video[src="/assets/vidéos/Rusif_Motion.mp4"] {
+    width: 360px !important;
+  }
+
   .collect-golem-section__card__video {
     justify-content: center;
+    height: 85%;
+    width: 360px;
   }
 
   .collect-golem-section__card__wrapper-center video {
@@ -2229,11 +2344,11 @@ img[src="/assets/images/epic-icon.png"] {
   }
 
   .slide__title {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 
   .slide__text {
-    font-size: 1.3em;
+    font-size: 26px;
     margin-top: 0px;
   }
 

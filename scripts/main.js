@@ -8,7 +8,9 @@ const golemDataArray = [
     name: "Okorus",
     motion: "/assets/vidéos/Okorus_Motion.mp4",
     rarity: "/assets/images/epic-icon.png",
-    type: "/assets/images/type-neutral.png",
+    rarityText: "EPIC",
+    typeIcon: "/assets/images/neutral.png",
+    typeText: "NEUTRAL",
     turretText: "Fatal Strike: Summon 1 Golem on the opponent's path",
     invocationText: "Summon 3 golems per turret level at the moment it is sold",
     damage: "200",
@@ -22,7 +24,9 @@ const golemDataArray = [
     name: "Mystone",
     motion: "/assets/vidéos/Mystone_Motion.mp4",
     rarity: "/assets/images/common-icon.png",
-    type: "/assets/images/type-humus.png",
+    rarityText: "COMMON",
+    typeIcon: "/assets/images/humus.png",
+    typeText: "HUMUS",
     turretText:
       "The projectile creates a whirlwind for 3 seconds. Inflicts damage on passing summons",
     invocationText: "No effects.",
@@ -37,7 +41,9 @@ const golemDataArray = [
     name: "Rusif",
     motion: "/assets/vidéos/Rusif_Motion.mp4",
     rarity: "/assets/images/legendary-icon.png",
-    type: "/assets/images/type-ignis.png",
+    rarityText: "LEGENDARY",
+    typeIcon: "/assets/images/ignis.png",
+    typeText: "IGNIS",
     turretText:
       "The attack ignites a large area, burning any invocations passing through it.",
     invocationText:
@@ -53,7 +59,9 @@ const golemDataArray = [
     name: "Famas",
     motion: "/assets/vidéos/Famas_Motion.mp4",
     rarity: "/assets/images/legendary-icon.png",
-    type: "/assets/images/type-neutral.png",
+    rarityText: "LEGENDARY",
+    typeIcon: "/assets/images/neutral.png",
+    typeText: "NEUTRAL",
     turretText: "Attack split into 7-shot bursts",
     invocationText: "On spawn: Gains 7 shields that block turret attacks",
     damage: "200",
@@ -67,7 +75,9 @@ const golemDataArray = [
     name: "Jaspyro",
     motion: "/assets/vidéos/Jaspyro_Motion.mp4",
     rarity: "/assets/images/epic-icon.png",
-    type: "/assets/images/type-humus.png",
+    rarityText: "EPIC",
+    typeIcon: "/assets/images/humus.png",
+    typeText: "HUMUS",
     turretText: "inflicts area damage around the target and stuns for 0.5s",
     invocationText:
       "On death: it splits in two and then in two again on death.",
@@ -82,7 +92,9 @@ const golemDataArray = [
     name: "Blicken",
     motion: "/assets/vidéos/Blicken_Motion.mp4",
     rarity: "/assets/images/common-icon.png",
-    type: "/assets/images/type-ignis.png",
+    rarityText: "COMMON",
+    typeIcon: "/assets/images/ignis.png",
+    typeText: "IGNIS",
     turretText:
       "Attack split into 2-shot bursts Fatal blow: Relaunches his attack immediately",
     invocationText:
@@ -112,7 +124,9 @@ function displayInfo(id) {
       name,
       motion,
       rarity,
-      type,
+      rarityText,
+      typeIcon,
+      typeText,
       turretText,
       invocationText,
       damage,
@@ -126,8 +140,25 @@ function displayInfo(id) {
     document.querySelector(
       ".collect-golem-section__card__wrapper-center video"
     ).src = motion;
-    document.querySelector(".golem-infos__rarity").src = rarity;
-    document.querySelector(".golem-infos__type").src = type;
+    document.querySelector(".golem-infos__rarity__img").src = rarity;
+    document.querySelector(".golem-infos__rarity__text").textContent =
+      rarityText;
+    document.querySelector(".golem-infos__type__icon").src = typeIcon;
+    const typeTextElement = document.querySelector(".golem-infos__type__text");
+    typeTextElement.textContent = typeText;
+
+    switch (typeText.toUpperCase()) {
+      case "IGNIS":
+        typeTextElement.style.color = "#FF2E00";
+        break;
+      case "HUMUS":
+        typeTextElement.style.color = "#AEEA00";
+        break;
+      case "NEUTRAL":
+        typeTextElement.style.color = "#C796CC";
+        break;
+    }
+
     document.querySelector(".turret-arrays__text").textContent = turretText;
     document.querySelector(".invocation-arrays__text").textContent =
       invocationText;
@@ -244,7 +275,7 @@ function updateSlides() {
   const dots = document.querySelectorAll(".dot");
 
   slides.forEach((slide, index) => {
-    slide.style.display = index === slideIndex ? "block" : "none";
+    slide.style.display = index === slideIndex ? "flex" : "none";
   });
 
   if (slideIndex === 2 || slideIndex === 4) {

@@ -35,6 +35,7 @@ const networks = [
       symbol: "MATIC",
       decimals: 18,
     },
+    blockExplorerUrls: ["https://polygonscan.com/"], // Ajouté
     tokenAddresses: {
       matic: null,
       usdc: "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
@@ -58,9 +59,10 @@ const networks = [
       symbol: "ETH",
       decimals: 18,
     },
+    blockExplorerUrls: ["https://etherscan.io/"], // Ajouté
     tokenAddresses: {
       eth: null,
-      usdc: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      usdc: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606EB48",
       usdt: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
     },
     tokenABIs: {
@@ -81,6 +83,7 @@ const networks = [
       symbol: "BNB",
       decimals: 18,
     },
+    blockExplorerUrls: ["https://bscscan.com/"],
     tokenAddresses: {
       bnb: null,
       usdc: "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
@@ -96,7 +99,7 @@ const networks = [
     id: 4,
     name: "AVALANCHE",
     cryptos: ["AVAX", "USDC", "USDT"],
-    networkId: "0xA86A",
+    networkId: "0xa86a",
     rpcUrl: "https://api.avax.network/ext/bc/C/rpc",
     chainName: "Avalanche C-Chain Mainnet",
     nativeCurrency: {
@@ -104,6 +107,7 @@ const networks = [
       symbol: "AVAX",
       decimals: 18,
     },
+    blockExplorerUrls: ["https://cchain.explorer.avax.network/"],
     tokenAddresses: {
       avax: null,
       usdc: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
@@ -214,26 +218,14 @@ async function getTokenBalance(network, tokenName, userAddress) {
       if (tokenName.toLowerCase() === selectedCrypto.toLowerCase()) {
         balanceAmount = parseFloat(formattedBalance); // Assurez-vous que balanceAmount est en nombre
       }
-
-      console.log(
-        `Balance in ${tokenName.toUpperCase()} on ${network.name}:`,
-        formattedBalance
-      );
     } catch (error) {
       console.error(
-        `Error fetching ${tokenName} balance on ${network.name}:`,
+        Error`fetching ${tokenName} balance on ${network.name}:`,
         error
       );
     }
   } else {
     console.error("Web3 or user address not initialized");
-  }
-}
-
-async function checkNetwork() {
-  if (web3) {
-    let chainId = await web3.eth.getChainId();
-    console.log(chainId);
   }
 }
 
@@ -285,7 +277,7 @@ function connectButtonchange() {
   const moneyInvestInput = document.querySelector(".input__field");
   connectWalletButton.textContent = "MINIMUM TICKET  : $500";
 
-  moneyInvestInput.addEventListener("input", () => {
+  moneyInvestInput.addEventListener("input", async () => {
     const inputValue = parseFloat(moneyInvestInput.value);
 
     if (isNaN(inputValue)) {
@@ -293,7 +285,13 @@ function connectButtonchange() {
       return;
     }
 
-    if (inputValue >= 500) {
+    // Obtenez la valeur en USD
+    const cryptoPriceInUsd = getCryptoPriceInUsd(selectedCrypto);
+    const usdValue = cryptoPriceInUsd
+      ? (inputValue * cryptoPriceInUsd).toFixed(2)
+      : 0;
+
+    if (parseFloat(usdValue) >= 500) {
       connectWalletButton.textContent = "INVEST";
       connectWalletButton.addEventListener("click", () => {
         const modal = document.querySelector(".modal");
@@ -307,20 +305,18 @@ function connectButtonchange() {
         });
 
         if (balanceAmount >= inputValue) {
-          modal.innerHTML = `
-          <div class="modal__content">
-            <p>Transaction validé !</p>
-            <span>Vous pouvez à présent consulter votre historique de transaction</span>
-            <a href="transactions.html">HISTORIQUE DE TRANSACTION</a>
-          </div>
-          `;
+          modal.innerHTML = `<div class="modal__content">
+              <p>Transaction validée !</p>
+              <span>
+                Vous pouvez à présent consulter votre historique de transaction
+              </span>
+              <a href="transactions.html">HISTORIQUE DE TRANSACTION</a>
+            </div>`;
         } else {
-          modal.innerHTML = `
-          <div class="modal__content">
-            <p>Solde insuffisant</p>
-            <button class="modal__proceed-button">CONTINUER</button>
-          </div>
-          `;
+          modal.innerHTML = `<div class="modal__content">
+              <p>Solde insuffisant</p>
+              <button class="modal__proceed-button">CONTINUER</button>
+            </div>`;
           const modalProceedButton = document.querySelector(
             ".modal__proceed-button"
           );
@@ -333,6 +329,12 @@ function connectButtonchange() {
     } else {
       connectWalletButton.textContent = "MINIMUM TICKET  : $500";
     }
+
+    // Mettez à jour l'affichage de la valeur en USD
+    const usdValueDisplay = document.querySelector(
+      ".money-to-invest__input__wrapper--size"
+    );
+    usdValueDisplay.textContent = `≈$${usdValue}`;
   });
 }
 // Met à jour le premier élément <li> de la liste des cryptos
@@ -377,10 +379,12 @@ async function switchNetwork(selectedNetwork) {
   try {
     const chainIdHex = Web3.utils.toHex(selectedNetwork.networkId);
 
+    // Récupérer l'ID du réseau actuel
     const currentChainId = await window.ethereum.request({
       method: "eth_chainId",
     });
 
+    // Changer de réseau uniquement si nécessaire
     if (currentChainId !== chainIdHex) {
       await window.ethereum.request({
         method: "wallet_addEthereumChain",
@@ -390,6 +394,7 @@ async function switchNetwork(selectedNetwork) {
             chainName: selectedNetwork.chainName,
             rpcUrls: [selectedNetwork.rpcUrl],
             nativeCurrency: selectedNetwork.nativeCurrency,
+            blockExplorerUrls: selectedNetwork.blockExplorerUrls,
           },
         ],
       });
@@ -400,18 +405,36 @@ async function switchNetwork(selectedNetwork) {
       });
     }
 
-    // Met à jour la première crypto comme sélectionnée
-    selectedCrypto = selectedNetwork.cryptos[0];
+    // Attendre que le changement de réseau soit effectif
+    const newChainId = await new Promise((resolve) => {
+      const interval = setInterval(async () => {
+        const chainId = await window.ethereum.request({
+          method: "eth_chainId",
+        });
+        if (chainId === chainIdHex) {
+          clearInterval(interval);
+          resolve(chainId);
+        }
+      }, 1000);
+    });
 
-    // Récupère les soldes des tokens et met à jour l'interface utilisateur
+    // Récupérer les soldes des tokens après avoir changé de réseau
     await getBalances(userAccount, selectedNetwork);
 
-    // Réinitialise et met à jour toutes les valeurs des cryptos
+    // Réinitialiser et mettre à jour toutes les valeurs des cryptos
     await resetAndUpdateAllCryptoValues();
 
     // Met à jour la valeur du premier élément de la liste
     updateFirstCryptoDisplay();
     investedMoneyInputValue();
+
+    // Met à jour le texte du dropdown avec le réseau sélectionné
+    const selectedValue = document.querySelector(
+      ".select-input__selected-value"
+    );
+    if (selectedValue) {
+      selectedValue.textContent = selectedNetwork.name;
+    }
 
     // Réinitialiser le champ de saisie du montant
     const moneyInvestInput = document.querySelector(".input__field");
@@ -422,10 +445,34 @@ async function switchNetwork(selectedNetwork) {
       ).textContent = "≈$0.00"); // Réinitialiser l'affichage
     }
   } catch (error) {
-    console.error("Failed to switch network:", error);
+    console.error("Failed to switch network or get balances:", error);
     alert(
-      "Failed to switch network. Please ensure that the network details are correct."
+      "Failed to switch network or retrieve balances. Please ensure that the network details are correct."
     );
+  }
+}
+
+async function checkCurrentNetwork() {
+  if (web3) {
+    const chainIdHex = await window.ethereum.request({ method: "eth_chainId" });
+    const currentNetwork = networks.find((net) => {
+      return Web3.utils.toHex(net.networkId) === chainIdHex;
+    });
+    if (!currentNetwork) {
+      // Si le réseau actuel n'est pas supporté, passer à Polygon
+      const polygonNetwork = networks.find((net) => net.name === "POLYGON");
+      if (polygonNetwork) {
+        await switchNetwork(polygonNetwork);
+      }
+    } else {
+      // Si le réseau est supporté, mettre à jour les menus déroulants
+      await updateCryptoList(currentNetwork);
+      selectedCrypto = currentNetwork.cryptos[0];
+      await getBalances(userAccount, currentNetwork);
+      await resetAndUpdateAllCryptoValues();
+      updateFirstCryptoDisplay();
+      investedMoneyInputValue();
+    }
   }
 }
 
@@ -440,15 +487,10 @@ async function connectWallet() {
       userAccount = accounts[0]; // compte de l'utilisateur
 
       fetchCryptoValue();
-      checkNetwork();
+      checkCurrentNetwork(); // Appel modifié
       addTransactionAndDisconnestButtons();
       addTokenPurchaseSection();
       connectButtonchange();
-
-      investedMoneyInputValue();
-
-      // Appel pour obtenir les soldes et mettre à jour les valeurs
-      await getBalances(userAccount, networks[0]);
     } catch (error) {
       console.error(error);
     }
@@ -481,16 +523,44 @@ function addTokenPurchaseSection() {
   setupDropdowns();
 }
 
-function setupNetworkSelection() {
+async function setupNetworkSelection() {
   const networkSelect = document.querySelector(".network-select");
 
+  // Création des options du menu déroulant pour les réseaux
   networks.forEach((network) => {
     const option = document.createElement("li");
-    option.textContent = network.name;
-    option.dataset.networkId = network.networkId; // Store the network id
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = network.name;
+    option.appendChild(paragraph);
+    option.dataset.networkId = network.networkId;
     networkSelect.appendChild(option);
   });
 
+  // Récupérer le réseau actuel
+  try {
+    const currentChainId = await window.ethereum.request({
+      method: "eth_chainId",
+    });
+
+    // Trouver le réseau correspondant à l'ID actuel
+    const currentNetwork = networks.find(
+      (network) => Web3.utils.toHex(network.networkId) === currentChainId
+    );
+
+    if (currentNetwork) {
+      const selectedValue = document.querySelector(
+        ".select-input__selected-value"
+      );
+      if (selectedValue) {
+        selectedValue.textContent = currentNetwork.name;
+      }
+    }
+  } catch (error) {
+    console.error("Failed to get current network:", error);
+  }
+
+  // Ajouter un écouteur d'événements pour les sélections de réseau
   networkSelect.addEventListener("click", async (event) => {
     if (event.target.tagName !== "LI") return;
 
@@ -506,6 +576,14 @@ function setupNetworkSelection() {
 
     await updateCryptoList(selectedNetwork);
     await switchNetwork(selectedNetwork);
+
+    // Met à jour le texte du dropdown avec le réseau sélectionné
+    const selectedValue = document.querySelector(
+      ".select-input__selected-value"
+    );
+    if (selectedValue) {
+      selectedValue.textContent = selectedNetwork.name;
+    }
 
     // Fermer le menu déroulant après la sélection
     const dropdownContent = networkSelect.parentElement.querySelector(
@@ -526,7 +604,7 @@ async function updateCryptoList(selectedNetwork) {
 
   selectedNetwork.cryptos.forEach((crypto) => {
     const listItem = document.createElement("li");
-    listItem.innerHTML = `<p>${crypto}</p>
+    listItem.innerHTML = ` <p>${crypto}</p>
       <div class="select-crypto__li__wrapper">
         <span class="select-crypto__li__input__balance-amount select-crypto__amount-style" data-token-name="${crypto.toLowerCase()}" data-network-id="${selectedNetwork.networkId}">0.0000</span>
         <span class="select-crypto__input__li__balance-value-usd"></span>
