@@ -177,7 +177,7 @@ a {
   width: 100%;
 }
 
-.banner-section p {
+.banner-section h2 {
   font-size: 1.4em;
   font-weight: bold;
   color: #c1b69b;
@@ -231,7 +231,7 @@ a {
 
 .economy-section__box {
   width: 45%;
-  height: 430px;
+  height: 465px;
   z-index: 1;
   position: relative;
   background-color: #ece2cf;
@@ -331,12 +331,36 @@ a {
   margin-top: 15px;
   text-align: center;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.economy-section__box__lauchpads__title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 90%;
+}
+
+.economy-section__box__lauchpads__title p {
+  font-size: 19px;
+  font-weight: bold;
+  color: #5e594b;
+}
+
+.launchpads__line {
+  height: 2px;
+  width: 100%;
+  background: #5e594b;
 }
 
 .economy-section__box__lauchpads__icons {
   display: flex;
   justify-content: center;
   gap: 30px;
+  margin-top: 20px;
 }
 
 .economy-section__box__lauchpads-line {
@@ -345,7 +369,7 @@ a {
 
 .economy-section__box__lauchpads__icons img {
   gap: 15px;
-  height: 65px;
+  height: 75px;
 }
 
 .game-infos-section {
@@ -364,8 +388,9 @@ a {
 .economy-section__golem-img {
   position: absolute;
   right: 5%;
-  bottom: -82%;
+  bottom: -78%;
   z-index: 1;
+  height: 400px;
 }
 
 .game-infos-section__turret-img {
@@ -1094,6 +1119,7 @@ img[src="/assets/images/epic.png"] {
   flex-wrap: wrap;
   margin-top: 20px;
   margin-bottom: 90px;
+  padding-bottom: 80px;
 }
 
 .partners a img {
@@ -1105,6 +1131,7 @@ img[src="/assets/images/epic.png"] {
   z-index: 2;
   background-color: #fffefb;
   padding: 30px 0px;
+  height: 680px;
 }
 
 .threevision-section__background-texture {
@@ -1129,7 +1156,7 @@ img[src="/assets/images/epic.png"] {
   gap: 30px;
 }
 
-.threevision-section p {
+.threevision-section h2 {
   text-align: center;
   width: 60%;
   color: black;
@@ -1185,7 +1212,8 @@ img[src="/assets/images/epic.png"] {
   justify-content: center;
   align-items: center;
   gap: 60px;
-  padding: 25px 0px;
+  padding: 25px 10px;
+  height: 300px;
 }
 
 .joins-us-section__text {
@@ -1365,7 +1393,7 @@ img[src="/assets/images/epic.png"] {
   }
 
   /* ----- banner section -----*/
-  .banner-section p {
+  .banner-section h2 {
     font-size: 1.2em;
   }
 
@@ -1489,7 +1517,7 @@ img[src="/assets/images/epic.png"] {
     font-size: 5em;
   }
 
-  .banner-section p {
+  .banner-section h2 {
     font-size: 0.9em;
   }
 
@@ -1838,8 +1866,8 @@ img[src="/assets/images/epic.png"] {
   }
 
   /* joins us section */
-  .threevision-section p {
-    font-size: 2.1em;
+  .threevision-section h2 {
+    font-size: 2.3em;
     width: 90%;
   }
 
@@ -1862,7 +1890,7 @@ img[src="/assets/images/epic.png"] {
 
 @media (max-width: 756px) {
   /* banner section */
-  .banner-section p {
+  .banner-section h2 {
     font-size: 0.72em;
   }
 
@@ -1900,9 +1928,6 @@ img[src="/assets/images/epic.png"] {
   }
 
   /* collect golem section */
-  .collect-golem-section__card {
-    width: 539px;
-  }
 
   video[src="/assets/vidéos/Okorus_Motion.mp4"] {
     width: 56% !important;
@@ -1915,6 +1940,10 @@ img[src="/assets/images/epic.png"] {
 
   .collect-golem-section__card__wrapper-center {
     gap: 0px;
+  }
+
+  .collect-golem-section__card__fairy {
+    display: none;
   }
 
   .array-title {
@@ -1934,6 +1963,7 @@ img[src="/assets/images/epic.png"] {
 
   .collect-golem-section__card {
     height: 705px;
+    width: 561px;
   }
 
   .collect-golem-section__card__golem-infos {
@@ -1942,7 +1972,7 @@ img[src="/assets/images/epic.png"] {
   }
 
   .golem-infos__name {
-    font-size: 2em;
+    font-size: 40px;
   }
 
   .collect-golem-section__card__golem-infos__type-wrapper {
@@ -1977,7 +2007,7 @@ img[src="/assets/images/epic.png"] {
   }
 
   .collect-golem-section__card__golem-infos {
-    width: 41%;
+    width: 44%;
   }
 
   .collect-golem-section__card__arrays {
@@ -2057,7 +2087,7 @@ img[src="/assets/images/epic.png"] {
   }
 
   .section-titles {
-    font-size: 1.8em;
+    font-size: 2.4em;
   }
 
   .header-content {
@@ -2096,7 +2126,7 @@ img[src="/assets/images/epic.png"] {
     gap: 25px;
   }
 
-  .banner-section p {
+  .banner-section h2 {
     font-size: 1.2em;
   }
 
@@ -2113,6 +2143,15 @@ img[src="/assets/images/epic.png"] {
 
   .banner-section__alphabet-background {
     font-size: 7em;
+  }
+
+  .economy-section__box__lauchpads__title {
+    gap: 10px;
+    width: 103%;
+  }
+
+  .economy-section__box__lauchpads__title p {
+    font-size: 16px;
   }
 
   .economy-section {
@@ -2152,6 +2191,10 @@ img[src="/assets/images/epic.png"] {
 
   .economy-section__box__lauchpads__icons {
     flex-wrap: wrap;
+  }
+
+  .economy-section__box__lauchpads__icons img {
+    height: 62px;
   }
 
   .economy-section__box__token {
@@ -2197,7 +2240,7 @@ img[src="/assets/images/epic.png"] {
     display: flex;
     flex-direction: column;
     gap: 85px;
-    margin-top: 50px;
+    margin-top: 70px;
   }
 
   .game-infos-section__wrapper {
@@ -2292,7 +2335,7 @@ img[src="/assets/images/epic.png"] {
   }
 
   .slider-section {
-    margin-top: 80px 0px;
+    margin-top: 80px;
   }
 
   .slider {
@@ -2375,7 +2418,7 @@ img[src="/assets/images/epic.png"] {
 
   .partner-section {
     height: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
   }
 
   .partners a img {
@@ -2388,10 +2431,6 @@ img[src="/assets/images/epic.png"] {
 
   .threevision-section__logo {
     height: 87px;
-  }
-
-  .threevision-section p {
-    font-size: 1.7em;
   }
 
   .joins-us-section {

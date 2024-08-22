@@ -12,7 +12,7 @@ const golemDataArray = [
     typeIcon: "/assets/images/neutral.png",
     typeText: "NEUTRAL",
     turretText: "Fatal Strike: Summon 1 Golem on the opponent's path",
-    invocationText: "Summon 3 golems per turret level at the moment it is sold",
+    invocationText: "When Sold, Summon 3 Golems per Tower level",
     damage: "200",
     rate: "1.5",
     range: "8",

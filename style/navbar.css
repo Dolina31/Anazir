@@ -65,7 +65,12 @@ header ul a:hover {
   height: 62px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1205px) {
+  .navbar {
+    padding-right: 4px;
+    padding-left: 14px;
+  }
+
   .navbar__app-logos {
     width: 150px;
   }

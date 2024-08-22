@@ -207,20 +207,15 @@ async function getTokenBalance(network, tokenName, userAddress) {
       const formattedBalance = formatBalance(balance, 4, !!tokenAddress);
 
       const balanceElement = document.querySelector(
-        `.select-crypto__li__input__balance-amount[data-token-name="${tokenName}"][data-network-id="${network.networkId}"]`
+        ` .select-crypto__li__input__balance-amount[data-token-name="${tokenName}"][data-network-id="${network.networkId}"]`
       );
 
       if (balanceElement) {
         balanceElement.textContent = formattedBalance;
       }
-
-      // Mettre à jour balanceAmount pour l'utiliser dans le bouton
-      if (tokenName.toLowerCase() === selectedCrypto.toLowerCase()) {
-        balanceAmount = parseFloat(formattedBalance); // Assurez-vous que balanceAmount est en nombre
-      }
     } catch (error) {
       console.error(
-        Error`fetching ${tokenName} balance on ${network.name}:`,
+        `Error fetching ${tokenName} balance on ${network.name}:`,
         error
       );
     }
@@ -229,10 +224,18 @@ async function getTokenBalance(network, tokenName, userAddress) {
   }
 }
 
+async function getBalances(userAddress, network) {
+  for (const token of network.cryptos) {
+    await getTokenBalance(network, token.toLowerCase(), userAddress);
+  }
+
+  await updateAllCryptoValues();
+}
+
 async function resetAndUpdateAllCryptoValues() {
   const cryptoList = document.querySelectorAll(".crypto-select li");
 
-  // Réinitialiser les valeurs en USD pour chaque crypto
+  // Réinitialise les valeurs en USD pour chaque crypto
   cryptoList.forEach((item) => {
     const valueElement = item.querySelector(
       ".select-crypto__input__li__balance-value-usd"
@@ -242,7 +245,7 @@ async function resetAndUpdateAllCryptoValues() {
     }
   });
 
-  // Mettre à jour les nouvelles valeurs après réinitialisation
+  // Met à jour les nouvelles valeurs après réinitialisation
   await updateAllCryptoValues();
 }
 
@@ -285,7 +288,7 @@ function connectButtonchange() {
       return;
     }
 
-    // Obtenez la valeur en USD
+    // Récupère la valeur en USD
     const cryptoPriceInUsd = getCryptoPriceInUsd(selectedCrypto);
     const usdValue = cryptoPriceInUsd
       ? (inputValue * cryptoPriceInUsd).toFixed(2)
@@ -293,6 +296,8 @@ function connectButtonchange() {
 
     if (parseFloat(usdValue) >= 500) {
       connectWalletButton.textContent = "INVEST";
+
+      // vérifie si la somme investi est disponible dans le wallet et affiche le message nécessaire
       connectWalletButton.addEventListener("click", () => {
         const modal = document.querySelector(".modal");
 
@@ -306,16 +311,16 @@ function connectButtonchange() {
 
         if (balanceAmount >= inputValue) {
           modal.innerHTML = `<div class="modal__content">
-              <p>Transaction validée !</p>
+              <p>Transaction confirmed !</p>
               <span>
-                Vous pouvez à présent consulter votre historique de transaction
+                You can now consult your transaction history
               </span>
-              <a href="transactions.html">HISTORIQUE DE TRANSACTION</a>
+              <a href="transactions.html">TRANSACTION HISTORY</a>
             </div>`;
         } else {
           modal.innerHTML = `<div class="modal__content">
-              <p>Solde insuffisant</p>
-              <button class="modal__proceed-button">CONTINUER</button>
+              <p>Insufficient funds</p>
+              <button class="modal__proceed-button">OK</button>
             </div>`;
           const modalProceedButton = document.querySelector(
             ".modal__proceed-button"
@@ -329,12 +334,6 @@ function connectButtonchange() {
     } else {
       connectWalletButton.textContent = "MINIMUM TICKET  : $500";
     }
-
-    // Mettez à jour l'affichage de la valeur en USD
-    const usdValueDisplay = document.querySelector(
-      ".money-to-invest__input__wrapper--size"
-    );
-    usdValueDisplay.textContent = `≈$${usdValue}`;
   });
 }
 // Met à jour le premier élément <li> de la liste des cryptos
@@ -384,7 +383,7 @@ async function switchNetwork(selectedNetwork) {
       method: "eth_chainId",
     });
 
-    // Changer de réseau uniquement si nécessaire
+    // Change le réseau uniquement si c'est nécessaire
     if (currentChainId !== chainIdHex) {
       await window.ethereum.request({
         method: "wallet_addEthereumChain",
@@ -405,7 +404,7 @@ async function switchNetwork(selectedNetwork) {
       });
     }
 
-    // Attendre que le changement de réseau soit effectif
+    // Attend que le changement de réseau soit effectif
     const newChainId = await new Promise((resolve) => {
       const interval = setInterval(async () => {
         const chainId = await window.ethereum.request({
@@ -415,7 +414,7 @@ async function switchNetwork(selectedNetwork) {
           clearInterval(interval);
           resolve(chainId);
         }
-      }, 1000);
+      }, 200);
     });
 
     // Récupérer les soldes des tokens après avoir changé de réseau
@@ -436,13 +435,13 @@ async function switchNetwork(selectedNetwork) {
       selectedValue.textContent = selectedNetwork.name;
     }
 
-    // Réinitialiser le champ de saisie du montant
+    // Réinitialise le champ de saisie du montant
     const moneyInvestInput = document.querySelector(".input__field");
     if (moneyInvestInput) {
-      moneyInvestInput.value = "0"; // Réinitialiser la valeur du champ
+      moneyInvestInput.value = "0"; // Réinitialise la valeur du champ
       const usdValueDisplay = (document.querySelector(
         ".money-to-invest__input__wrapper--size"
-      ).textContent = "≈$0.00"); // Réinitialiser l'affichage
+      ).textContent = "≈$0.00"); // Réinitialise l'affichage
     }
   } catch (error) {
     console.error("Failed to switch network or get balances:", error);
@@ -459,13 +458,18 @@ async function checkCurrentNetwork() {
       return Web3.utils.toHex(net.networkId) === chainIdHex;
     });
     if (!currentNetwork) {
-      // Si le réseau actuel n'est pas supporté, passer à Polygon
+      // Si le réseau actuel n'est pas proposé, passer à Polygon
       const polygonNetwork = networks.find((net) => net.name === "POLYGON");
       if (polygonNetwork) {
         await switchNetwork(polygonNetwork);
+        await updateCryptoList(polygonNetwork);
+        await getBalances(userAccount, polygonNetwork);
+        await resetAndUpdateAllCryptoValues();
+        updateFirstCryptoDisplay();
+        investedMoneyInputValue();
       }
     } else {
-      // Si le réseau est supporté, mettre à jour les menus déroulants
+      // Si le réseau est proposé, mettre à jour les menus déroulants
       await updateCryptoList(currentNetwork);
       selectedCrypto = currentNetwork.cryptos[0];
       await getBalances(userAccount, currentNetwork);
@@ -476,7 +480,6 @@ async function checkCurrentNetwork() {
   }
 }
 
-// Exécution après connexion du portefeuille
 connectWalletButton.addEventListener("click", connectWallet);
 async function connectWallet() {
   if (typeof window.ethereum !== "undefined") {
@@ -487,7 +490,7 @@ async function connectWallet() {
       userAccount = accounts[0]; // compte de l'utilisateur
 
       fetchCryptoValue();
-      checkCurrentNetwork(); // Appel modifié
+      checkCurrentNetwork();
       addTransactionAndDisconnestButtons();
       addTokenPurchaseSection();
       connectButtonchange();
@@ -497,21 +500,13 @@ async function connectWallet() {
   } else {
     connectWalletErrorMessage.style.visibility = "visible";
   }
-  connectWalletButton.removeEventListener("click", connectWallet);
-}
-
-async function getBalances(userAddress, network) {
-  for (const token of network.cryptos) {
-    await getTokenBalance(network, token.toLowerCase(), userAddress);
-  }
-
-  await updateAllCryptoValues();
+  connectWalletButton.removeEventListener("click", connectWallet); // une fois l'utilisateur connecté on supprime la fonctionnalité du bouton
 }
 
 function addTransactionAndDisconnestButtons() {
   walletInvestSection.classList.remove("invest__section__connect-wallet__text");
   walletInvestSection.classList.add("invest__section__connected-wallet");
-  connectedWalletButtons.style.visibility = "visible";
+  connectedWalletButtons.style.display = "flex";
 }
 
 function addTokenPurchaseSection() {
@@ -592,9 +587,6 @@ async function setupNetworkSelection() {
     const downArrow = networkSelect.parentElement.querySelector(
       ".select-input__down-arrow"
     );
-
-    dropdownContent.classList.remove("show");
-    downArrow.classList.remove("rotate");
   });
 }
 
@@ -623,58 +615,50 @@ function setupCryptoListClick() {
     const selectedLi = event.target.closest("li");
 
     if (selectedLi) {
-      // Récupérer le nom de la crypto sélectionnée
+      // Sélection es éléments DOM
       const selectedCryptoElement = selectedLi.querySelector("p");
-      selectedCrypto = selectedCryptoElement
-        ? selectedCryptoElement.textContent
-        : "";
-
-      // Mise à jour de l'affichage
-      document.querySelector(".select-input__crypto").textContent =
-        selectedCrypto;
-
-      // Mettre à jour le montant et la valeur en USD
       const balanceAmountElement = selectedLi.querySelector(
         ".select-crypto__li__input__balance-amount"
       );
-      const balanceAmountText = balanceAmountElement
-        ? balanceAmountElement.textContent
-        : "0";
-      balanceAmount = parseFloat(balanceAmountText);
-
       const balanceValueElement = selectedLi.querySelector(
         ".select-crypto__input__li__balance-value-usd"
       );
+      const mainBalanceElement = document.querySelector(
+        ".select-crypto__input__balance-amount.select-crypto__amount-style"
+      );
+
+      // Récupérer les données
+      const selectedCrypto = selectedCryptoElement
+        ? selectedCryptoElement.textContent
+        : "";
+      const balanceAmountText = balanceAmountElement
+        ? balanceAmountElement.textContent
+        : "0";
+      const balanceAmount = parseFloat(balanceAmountText);
       const tokenName = balanceAmountElement.dataset.tokenName;
+
+      // Mise à jour du nom de la crypto et du montant
+      document.querySelector(".select-input__crypto").textContent =
+        selectedCrypto;
+      mainBalanceElement.textContent = `${balanceAmount.toFixed(4)}`;
+
+      // Mise à jour de la valeur en USD
       const cryptoValue = cryptoValues.find(
         (c) => c.name === tokenName.toLowerCase()
       );
-
       if (cryptoValue) {
         const balanceValue = (balanceAmount * cryptoValue.value).toFixed(2);
         balanceValueElement.textContent = `≈$${balanceValue}`;
-
         document.querySelector(
           ".select-crypto__input__balance-value-usd"
         ).textContent = `≈$${balanceValue}`;
       } else {
-        balanceValueElement.textContent = "≈$0.00"; // Valeur par défaut si crypto non trouvée
-      }
-
-      // Mise à jour du champ principal
-      const selectedBalanceElement = document.querySelector(
-        ".select-crypto__input__balance-amount.select-crypto__amount-style"
-      );
-      if (selectedBalanceElement) {
-        selectedBalanceElement.textContent = `${balanceAmount.toFixed(4)}`;
+        balanceValueElement.textContent = "≈$0.00";
       }
 
       // Mettre à jour le solde de la crypto-monnaie sélectionnée
-      await getTokenBalance(
-        networks.find((n) => n.cryptos.includes(selectedCrypto)),
-        selectedCrypto.toLowerCase(),
-        userAccount
-      );
+      const network = networks.find((n) => n.cryptos.includes(selectedCrypto));
+      await getTokenBalance(network, selectedCrypto.toLowerCase(), userAccount);
     }
   });
 }

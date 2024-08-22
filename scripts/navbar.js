@@ -1,4 +1,3 @@
-//---------- fonction qui gère le comportement de la navbar en responsive
 function navbar() {
   const navbarMobileButton = document.querySelector(".navbar-mobile");
   const navbarMobileCloseButton = document.querySelector(
@@ -12,6 +11,15 @@ function navbar() {
 
   navbarMobileCloseButton.addEventListener("click", () => {
     mobileMenu.classList.remove("active");
+  });
+
+  // Fermer la navbar lorsque l'utilisateur clique sur un élément de menu
+  const menuItems = document.querySelectorAll(".navbar__mobile-menu a");
+
+  menuItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+    });
   });
 }
 
@@ -52,6 +60,7 @@ function checkWindowSize() {
 }
 
 navbar();
+
 // Appelez la fonction lors du redimensionnement de la fenêtre
 window.addEventListener("resize", checkWindowSize);
 
