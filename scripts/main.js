@@ -302,3 +302,64 @@ document.addEventListener("DOMContentLoaded", () => {
   leftArrow.addEventListener("click", () => changeSlide(-1));
   rightArrow.addEventListener("click", () => changeSlide(1));
 });
+
+//
+document.addEventListener("DOMContentLoaded", () => {
+  const gameInfosWrappers = document.querySelectorAll(
+    ".game-infos-section__wrapper"
+  );
+  const bannerTitles = document.querySelectorAll(".banner-section__wrapper h2");
+  const bannerDots = document.querySelectorAll(".banner-section__wrapper img");
+  const economySectionBackgroundImg = document.querySelector(
+    ".economy-section__background-img"
+  );
+  const roadmapPhase = document.querySelectorAll(".roadmap__phase");
+  const roadmapFigure = document.querySelectorAll(
+    ".roadmap__background-figure"
+  );
+
+  console.log(economySectionBackgroundImg);
+
+  let delay = 0; // Variable pour suivre le délai progressif
+
+  // Options pour IntersectionObserver
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.65,
+  };
+
+  // Créer une instance de l'observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Ajouter la classe pour déclencher l'animation
+        entry.target.classList.add("animate");
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  bannerTitles.forEach((title) => {
+    observer.observe(title);
+  });
+
+  bannerDots.forEach((dot) => {
+    observer.observe(dot);
+  });
+
+  observer.observe(economySectionBackgroundImg);
+
+  gameInfosWrappers.forEach((wrapper) => {
+    observer.observe(wrapper);
+  });
+
+  roadmapPhase.forEach((phase, index) => {
+    observer.observe(phase);
+  });
+
+  roadmapFigure.forEach((figure) => {
+    observer.observe(figure);
+  });
+});

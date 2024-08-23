@@ -181,6 +181,25 @@ a {
   font-size: 1.4em;
   font-weight: bold;
   color: #c1b69b;
+  transform: translateY(-15px);
+  opacity: 0;
+  transition: all 0.4s 0.3s ease-in-out;
+}
+
+.banner-section h2.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.banner-section__wrapper img {
+  opacity: 0;
+  transition: opacity 0.5s 0.5s;
+  transform: translateY(-15px);
+}
+
+.banner-section__wrapper img.animate {
+  transform: translateY(0px);
+  opacity: 1;
 }
 
 .text-color--blue {
@@ -203,6 +222,13 @@ a {
 .economy-section__background-img {
   position: absolute;
   z-index: -1;
+  opacity: 0;
+  margin-top: 75px;
+  transition: opacity 0.6s ease-in-out; /* Utilisez transition au lieu de animation */
+}
+
+.economy-section__background-img.animate {
+  opacity: 1;
 }
 
 .economy-section__center {
@@ -431,7 +457,7 @@ a {
 .game-infos-section__play-anazir {
   position: absolute;
   top: 40%;
-  left: 28%;
+  left: 31%;
 }
 
 .game-infos-section__play-anazir img {
@@ -445,19 +471,33 @@ a {
 
 .game-infos-section__lower {
   position: relative;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-infos-section__wrapper {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8%;
+  gap: 20%;
   transform: translateY(-35px);
+  transition: all 0.6s ease-in-out;
+  opacity: 0;
+}
+
+.game-infos-section__wrapper.animate {
+  opacity: 1;
+  gap: 8%;
 }
 
 .wrapper2 {
   transform: translateY(38px);
 }
+
 .game-infos-section__translateY {
   transform: translateY(-167px);
 }
@@ -997,6 +1037,12 @@ img[src="/assets/images/epic.png"] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: translateY(-30px);
+  transition: transform 0.3s;
+}
+
+.roadmap__phase.animate {
+  transform: translateY(0px);
 }
 
 .roadmap__phase__content {
@@ -1011,9 +1057,14 @@ img[src="/assets/images/epic.png"] {
   height: 225px;
   width: 225px;
   border: 3px solid #988b6b;
-  transform: rotate(45deg);
+  transform: rotate(95deg);
   top: 25px;
   margin-left: 21px;
+  transition: transform 0.5s 0.5s ease-in-out;
+}
+
+.roadmap__background-figure.animate {
+  transform: rotate(45deg);
 }
 
 .roadmap__phase__indicators {
@@ -1132,6 +1183,7 @@ img[src="/assets/images/epic.png"] {
   background-color: #fffefb;
   padding: 30px 0px;
   height: 680px;
+  overflow: hidden;
 }
 
 .threevision-section__background-texture {
@@ -1175,10 +1227,12 @@ img[src="/assets/images/epic.png"] {
 }
 
 .logo1 {
-  top: 10%;
+  top: 21%;
   left: 39%;
-  transform: scaleX(-1) scaleY(1) rotate(121deg);
   height: 26px;
+  transform: rotate(65deg);
+  animation: infinite-rotate-left 8s linear infinite;
+  animation-delay: 3ms;
 }
 
 .logo2 {
@@ -1186,23 +1240,72 @@ img[src="/assets/images/epic.png"] {
   left: 10%;
   transform: rotate(112deg);
   height: 30px;
+  transform: rotate(65deg);
+  animation: infinite-rotate-right 7s linear infinite;
+  animation-delay: 3ms;
 }
 
 .logo3 {
   top: 43%;
-  left: 17%;
+  left: 33%;
+  transform: rotate(65deg);
+  animation: infinite-rotate-right 8s linear infinite;
+  animation-delay: 3ms;
 }
 
 .logo4 {
   top: 21%;
   left: 82%;
   height: 30px;
+  transform: rotate(65deg);
+  animation: infinite-rotate-left 6s linear infinite;
+  filter: blur(3px);
+  animation-delay: 3ms;
 }
 
 .logo5 {
   top: 80%;
   left: 14%;
   height: 30px;
+  transform: rotate(65deg);
+  animation: infinite-rotate-left 9s linear infinite;
+  animation-delay: 3ms;
+}
+
+.logo6 {
+  top: 80%;
+  right: 14%;
+  height: 30px;
+  transform: rotate(65deg);
+  animation: infinite-rotate-right 9s linear infinite;
+  animation-delay: 3ms;
+}
+
+.logo7 {
+  top: 80%;
+  left: 14%;
+  height: 30px;
+  transform: rotate(65deg);
+  animation: infinite-rotate-left 9s linear infinite;
+  animation-delay: 3ms;
+  filter: blur(3px);
+}
+
+@keyframes infinite-rotate-left {
+  0% {
+    transform: rotate(360deg) translateX(70px) translateY(-70px);
+  }
+  100% {
+    transform: rotate(0deg) translateX(70px) translateY(-70px);
+  }
+}
+@keyframes infinite-rotate-right {
+  0% {
+    transform: rotate(0deg) translateX(50px) translateY(-50px);
+  }
+  100% {
+    transform: rotate(360deg) translateX(50px) translateY(-50px);
+  }
 }
 
 .joins-us-section {
@@ -1263,6 +1366,7 @@ img[src="/assets/images/epic.png"] {
 }
 
 /* --------------------------------------------------------------*/
+
 @media (max-width: 1400px) {
   /* economy section*/
   .economy-section__center {
@@ -1280,10 +1384,6 @@ img[src="/assets/images/epic.png"] {
     height: 115%;
     position: absolute;
     z-index: -6;
-  }
-
-  .game-infos-section__turret-img {
-    height: 374px;
   }
 
   /* ----- collect golem section -----*/
@@ -1407,9 +1507,6 @@ img[src="/assets/images/epic.png"] {
   }
   .economy-section__golem-img {
     right: 1%;
-  }
-  .game-infos-section__wrapper.game-infos-section__translateY {
-    gap: 3%;
   }
 
   /* ----- roadmap section -----*/
@@ -1559,10 +1656,6 @@ img[src="/assets/images/epic.png"] {
     height: 97%;
   }
 
-  .game-infos-section__wrapper.game-infos-section__translateY {
-    gap: 4%;
-  }
-
   .game-infos-section__card-box-img {
     height: 334px;
   }
@@ -1611,10 +1704,6 @@ img[src="/assets/images/epic.png"] {
   .game-infos-section__play-anazir {
     top: 27%;
     left: 15%;
-  }
-
-  .game-infos-section__turret-img {
-    display: none;
   }
 
   /* collect golem section */
@@ -1835,6 +1924,20 @@ img[src="/assets/images/epic.png"] {
     flex-direction: column;
     transform: translateX(-7px);
     gap: 186px;
+  }
+
+  .roadmap__phase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-50px);
+    transition: all 0.3s;
+    opacity: 0;
+  }
+
+  .roadmap__phase.animate {
+    transform: translateX(0px);
+    opacity: 1;
   }
 
   .roadmap__phase__circle {
@@ -2535,5 +2638,51 @@ img[src="/assets/images/epic.png"] {
   .collect-golem-section__card {
     width: 96%;
     height: 649px;
+  }
+}
+
+/* QUERIES POUR LE TOURELLE HUMUS*/
+
+@media (max-width: 1819px) {
+  .game-infos-section__turret-img {
+    bottom: -83px;
+    left: 51px;
+    transform: rotateZ(2deg);
+  }
+}
+
+@media (max-width: 1615px) {
+  .game-infos-section__turret-img {
+    left: 22px;
+    transform: rotateZ(0deg);
+  }
+}
+
+@media (max-width: 1451px) {
+  .game-infos-section__turret-img {
+    bottom: -76px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .game-infos-section__turret-img {
+    height: 374px;
+    bottom: -40px;
+    z-index: -1;
+    transform: rotateZ(3deg);
+  }
+}
+
+@media (max-width: 1200px) {
+  .game-infos-section__turret-img {
+    bottom: -35px;
+    left: 22px;
+    transform: rotateZ(1deg);
+  }
+}
+
+@media (max-width: 1100px) {
+  .game-infos-section__turret-img {
+    display: none;
   }
 }

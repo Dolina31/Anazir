@@ -40,7 +40,7 @@ footer {
   align-items: center;
   font-weight: bold;
   gap: 4px;
-  color: white;
+  color: #ece2cf;
   text-decoration: none;
 }
 
@@ -59,12 +59,12 @@ ul a:hover {
 }
 
 .svg-link .svg-path {
-  fill: #ffffff; /* Couleur par défaut */
-  transition: fill 0.3s ease; /* Transition pour un effet plus fluide */
+  fill: #ffffff;
+  transition: fill 0.3s ease;
 }
 
 .svg-link:hover .svg-path {
-  fill: #00ffe6; /* Couleur au survol */
+  fill: #00ffe6;
 }
 
 .footer-under-line-section {
@@ -72,15 +72,17 @@ ul a:hover {
   width: 95%;
   display: flex;
   justify-content: space-between;
-  color: white;
+  color: #ece2cf;
   padding: 15px;
 }
 
 .footer-under-line-section a {
-  color: white;
+  text-decoration: underline;
+  color: #ece2cf;
 }
 
 .footer-legal-info {
+  color: #ece2cf;
   display: flex;
   align-items: center;
   gap: 15px;

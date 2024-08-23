@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://anazirgame.com/$1 [L,R=301]
